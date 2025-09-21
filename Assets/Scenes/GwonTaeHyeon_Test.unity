@@ -1988,6 +1988,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1590508569370994589, guid: d965008e4a0459341af05046edee8c13, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2539001981550175519, guid: d965008e4a0459341af05046edee8c13, type: 3}
       propertyPath: m_Name
       value: Crafting table
