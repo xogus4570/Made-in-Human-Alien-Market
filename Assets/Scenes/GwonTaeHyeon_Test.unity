@@ -1803,7 +1803,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.8460674
+  orthographic size: 3.3219612
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1987,6 +1987,10 @@ PrefabInstance:
     - target: {fileID: 75666117500727217, guid: d965008e4a0459341af05046edee8c13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 887814156094850589, guid: d965008e4a0459341af05046edee8c13, type: 3}
+      propertyPath: minigameSceneName
+      value: Minigame_Crafting table
       objectReference: {fileID: 0}
     - target: {fileID: 1590508569370994589, guid: d965008e4a0459341af05046edee8c13, type: 3}
       propertyPath: m_SortingOrder

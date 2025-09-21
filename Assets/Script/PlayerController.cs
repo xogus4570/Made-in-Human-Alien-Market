@@ -31,9 +31,7 @@ public class PlayerController : MonoBehaviour
             Collider2D target = Physics2D.OverlapCircle(transform.position, interactRadius, interactableMask);
             if (target != null)
             {
-                target.GetComponent<CraftingTable>()?.OnInteract(); //?앞에가 null이 아니면 함수 실행, ? 앞이 null이면 null 반환
-                //제작대 코드로가서 ui생성하는 코드로 바꿔서 만들면 될 듯
-
+                target.GetComponent<IInteractable>()?.OnInteract(this.gameObject); 
             }
 
         }
