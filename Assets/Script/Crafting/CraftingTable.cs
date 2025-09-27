@@ -10,6 +10,6 @@ public class CraftingTable : ProductionStation
 
     protected override void Produce(GameObject by)
     {
-        SceneManager.LoadSceneAsync(minigameSceneName, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(minigameSceneName, LoadSceneMode.Additive);
     }
 }
