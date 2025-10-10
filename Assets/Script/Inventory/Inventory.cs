@@ -8,8 +8,18 @@ public class Inventory : MonoBehaviour
     public event System.Action Changed;
     private void Awake()
     {
-        if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); }
-        else { Destroy(gameObject); }
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            Debug.Log($"[Inventory] KEEP: {name}");
+        }
+        else if (instance != this)
+        {
+            Debug.Log($"[Inventory] DESTROY DUP: {name}");
+            Destroy(gameObject);
+            return;
+        }
     }
 
     [System.Serializable]
