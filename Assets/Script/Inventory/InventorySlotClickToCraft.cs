@@ -11,7 +11,7 @@ public class InventorySlotClickToCraft : MonoBehaviour, IPointerClickHandler
     void Awake()
     {
         if (slot == null) slot = GetComponent<InventorySlotUI>();
-        if (controller == null) controller = FindObjectOfType<CraftingController>(true);
+        if (controller == null) controller = FindFirstObjectByType<CraftingController>(FindObjectsInactive.Include);
     }
 
     public void OnPointerClick(PointerEventData eventData)

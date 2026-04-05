@@ -12,4 +12,14 @@ public class RecipeDB : MonoBehaviour
             if (r.Matches(a, b, c)) return r;
         return null;
     }
+    public Recipe FindByResultId(string resultId)
+    {
+        foreach (var r in recipes)
+        {
+            if (r.resultId == resultId)
+                return r;
+        }
+
+        return null;
+    }
 }

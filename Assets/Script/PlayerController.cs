@@ -40,6 +40,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = input * moveSpeed;
+        rb.linearVelocity = input * moveSpeed;
     }
 }
