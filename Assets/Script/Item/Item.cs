@@ -20,5 +20,10 @@ public class Item
     public string itemName;
     public Sprite itemImage;
 
+    [Header("상점 정보")]
+    public bool soldInShop = false;
+    public int shopPrice = 0;
+    public int shopCount = 1;
+
     public bool Use() => false;
 }

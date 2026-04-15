@@ -1,68 +1,156 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] private ShopEntry[] catalog;
     [SerializeField] private GameStatusUI gameStatus;
+    [SerializeField] private CraftingTable craftingTable;
+
     private IWalletService wallet;
 
     private void Awake()
     {
         if (gameStatus == null)
-            Debug.LogWarning("[Shop] GameStatusUI가 연결되지 않았습니다.");
+            Debug.LogWarning("[Shop] GameStatusUI가 연결되지 않았습니다.", this);
+
         wallet = new WalletFromGameStatus(gameStatus);
     }
 
-
-    public bool BuyById(string itemId, int count = 1)
+    public bool BuyItem(Item item)
     {
-        // 입력값 방어
-        if (string.IsNullOrEmpty(itemId) || count <= 0) return false;
-
-        var entry = FindEntryById(itemId);
-        if (entry == null) return false;
-
-        int cost = entry.buyPrice * Mathf.Max(1, count);
-        if (!wallet.TryPay(cost)) return false;
-
-        // DB 가드 + 환불
-        if (ItemDataBase.instance == null)
-        {
-            wallet.Add(cost); // 환불
-            Debug.LogError("[Shop] ItemDataBase.instance 없음 → 환불");
-            return false;
-        }
-
-        var item = ItemDataBase.instance.GetById(itemId);
         if (item == null)
         {
-            wallet.Add(cost); // 환불
-            Debug.LogError($"[Shop] ItemDatabase에서 {itemId} 없음 → 환불");
+            Debug.LogWarning("[Shop] item이 null입니다.", this);
             return false;
         }
 
-        // 인벤토리 가드 + 환불
+        if (!item.soldInShop)
+        {
+            Debug.LogWarning($"[Shop] 상점 판매 대상이 아닙니다: {item.itemName}", this);
+            return false;
+        }
+
+        if (wallet == null)
+        {
+            Debug.LogWarning("[Shop] wallet이 없습니다.", this);
+            return false;
+        }
+
+        if (!wallet.TryPay(item.shopPrice))
+        {
+            Debug.Log($"[Shop] 구매 실패(골드 부족): {item.itemName}", this);
+            return false;
+        }
+
+        bool success = false;
+
+        switch (item.itemType)
+        {
+            case ItemType.Material:
+            case ItemType.Gem:
+                success = BuyMaterialOrGem(item);
+                break;
+
+            case ItemType.Goods:
+                success = BuyGoods(item);
+                break;
+        }
+
+        if (!success)
+        {
+            Refund(item.shopPrice);
+            Debug.LogWarning($"[Shop] 구매 실패로 환불: {item.itemName}", this);
+        }
+
+        return success;
+    }
+
+    public bool BuyById(string itemId)
+    {
+        if (string.IsNullOrEmpty(itemId))
+        {
+            Debug.LogWarning("[Shop] itemId가 비어 있습니다.", this);
+            return false;
+        }
+
+        if (ItemDataBase.instance == null)
+        {
+            Debug.LogWarning("[Shop] ItemDataBase.instance가 없습니다.", this);
+            return false;
+        }
+
+        Item item = ItemDataBase.instance.GetById(itemId);
+        if (item == null)
+        {
+            Debug.LogWarning($"[Shop] itemId '{itemId}'를 찾지 못했습니다.", this);
+            return false;
+        }
+
+        return BuyItem(item);
+    }
+
+    public bool BuyUpgrade(string upgradeId, int price)
+    {
+        if (wallet == null)
+        {
+            Debug.LogWarning("[Shop] wallet이 없습니다.", this);
+            return false;
+        }
+
+        if (!wallet.TryPay(price))
+        {
+            Debug.Log($"[Shop] 강화 구매 실패(골드 부족): {upgradeId}", this);
+            return false;
+        }
+
+        if (craftingTable == null)
+        {
+            Debug.LogWarning("[Shop] CraftingTable이 연결되지 않았습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        bool success = craftingTable.ApplyUpgrade(upgradeId);
+
+        if (!success)
+            Refund(price);
+
+        return success;
+    }
+
+    private bool BuyMaterialOrGem(Item item)
+    {
         if (Inventory.instance == null)
         {
-            wallet.Add(cost); // 환불
-            Debug.LogError("[Shop] Inventory.instance 없음 → 환불");
+            Debug.LogWarning("[Shop] Inventory.instance가 없습니다.", this);
             return false;
         }
 
-        // 여기까지 왔으면 구매 성공
-        Debug.Log($"[Shop-Debug] DB에서 '{item.itemName}'(ID:{itemId}) 아이템을 찾았습니다. 이미지 상태: {item.itemImage}");
-        Inventory.instance.Add(item, count);
-        Debug.Log($"{item.itemName} 구매 완료");
+        int addCount = Mathf.Max(1, item.shopCount);
+        Inventory.instance.Add(item, addCount);
 
+        Debug.Log($"[Shop] 구매 완료: {item.itemName} x{addCount}", this);
         return true;
     }
 
-    private ShopEntry FindEntryById(string id)
+    private bool BuyGoods(Item item)
     {
-        foreach (var e in catalog)
-            if (e != null && e.item != null && e.item.id == id) return e;
-        return null;
+        if (GoodsUnlockManager.Instance == null)
+        {
+            Debug.LogWarning("[Shop] GoodsUnlockManager.Instance가 없습니다.", this);
+            return false;
+        }
+
+        bool unlocked = GoodsUnlockManager.Instance.Unlock(item.id);
+        if (!unlocked)
+            return false;
+
+        Debug.Log($"[Shop] 굿즈 해금 완료: {item.itemName}", this);
+        return true;
+    }
+
+    private void Refund(int amount)
+    {
+        if (gameStatus != null && amount > 0)
+            gameStatus.EarnGold(amount);
     }
 }

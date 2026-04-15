@@ -1,19 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopUI : MonoBehaviour
 {
-    [SerializeField] private GameObject shopUI; // Canvas_Shop 연결
-    bool activeShop = false;
+    [SerializeField] private GameObject shopRoot;
+    [SerializeField] private bool startOpened = false;
+    [SerializeField] private ShopTabController tabController;
 
-    private void Start()
+    private bool isOpen;
+
+    private void Awake()
     {
-        shopUI.SetActive(activeShop);
+        isOpen = startOpened;
+        ApplyState();
     }
 
     public void ToggleShop()
     {
-        shopUI.SetActive(!shopUI.activeSelf);
+        isOpen = !isOpen;
+        ApplyState();
+
+        if (isOpen && tabController != null)
+            tabController.ResetCurrentTabPosition();
+    }
+
+    public void OpenShop()
+    {
+        isOpen = true;
+        ApplyState();
+
+        if (tabController != null)
+            tabController.ResetCurrentTabPosition();
+    }
+
+    public void CloseShop()
+    {
+        isOpen = false;
+        ApplyState();
+    }
+
+    private void ApplyState()
+    {
+        if (shopRoot != null)
+            shopRoot.SetActive(isOpen);
     }
 }
