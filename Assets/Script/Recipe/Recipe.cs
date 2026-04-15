@@ -5,11 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class Recipe 
 {
+    public string resultId;
+
     public string ingredientA;
     public string ingredientB;
     public string ingredientC;
 
-    public string resultId;
     public int resultCount = 1;
 
     [Header("³³Ç° º¸»ó")]
