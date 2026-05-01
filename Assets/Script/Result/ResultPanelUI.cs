@@ -51,22 +51,19 @@ public class ResultPanelUI : MonoBehaviour
 
     public void ConfirmAndNextDay()
     {
-        if (DailyResultManager.Instance != null && gameStatusUI != null)
+        if (GameFlowController.Instance != null)
         {
-            DailyResultManager.Instance.ApplyTo(gameStatusUI);
-            DailyResultManager.Instance.ClearDailyResult();
+            GameFlowController.Instance.OnResultConfirmed();
+            return;
         }
 
-        if (OrderManager.Instance != null)
-            OrderManager.Instance.ClearAllOrders();
+        Debug.LogWarning("[ResultPanelUI] GameFlowController.Instance가 없습니다.");
+    }
 
-        if (gameStatusUI != null)
-            gameStatusUI.NextDay();
-
+    public void CloseResult()
+    {
         if (resultRoot != null)
             resultRoot.SetActive(false);
-
-        Debug.Log("[ResultPanelUI] 결과 반영 후 다음 날로 이동");
     }
 
     private string GetCurrentDayText()
