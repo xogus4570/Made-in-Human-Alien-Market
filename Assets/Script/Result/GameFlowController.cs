@@ -17,6 +17,9 @@ public class GameFlowController : MonoBehaviour
     [Header("상점 제어")]
     [SerializeField] private GameObject shopObject;
 
+    [Header("시작 버튼 제어")]
+    [SerializeField] private GameObject startObject;
+
     private void Awake()
     {
         Instance = this;
@@ -37,15 +40,23 @@ public class GameFlowController : MonoBehaviour
 
     private void Update()
     {
-        if (currentState == GameFlowState.Ready && Input.GetKeyDown(KeyCode.S))
-        {
-            EnterPlay();
-        }
-
-        if (currentState == GameFlowState.Play && Input.GetKeyDown(KeyCode.R))
+        // Result 전환은 아직 테스트용 R키/숫자 3키 유지
+        if (currentState == GameFlowState.Play &&
+            (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
             EnterResult();
         }
+    }
+
+    public void OnClickStartPlay()
+    {
+        if (currentState != GameFlowState.Ready)
+        {
+            Debug.LogWarning("[FSM] Ready 상태가 아니라 영업 시작 버튼 입력을 무시합니다.");
+            return;
+        }
+
+        EnterPlay();
     }
 
     public void EnterReady()
@@ -61,7 +72,10 @@ public class GameFlowController : MonoBehaviour
         if (shopObject != null)
             shopObject.SetActive(true);
 
-        Debug.Log("[FSM] Ready 상태: 준비 단계 / 상점 이용 가능 / 주문 생성 OFF");
+        if (startObject != null)
+            startObject.SetActive(true);
+
+        Debug.Log("[FSM] Ready 상태: 준비 단계 / 상점 이용 가능 / 영업 시작 버튼 ON / 주문 생성 OFF");
     }
 
     public void EnterPlay()
@@ -77,7 +91,10 @@ public class GameFlowController : MonoBehaviour
         if (shopObject != null)
             shopObject.SetActive(false);
 
-        Debug.Log("[FSM] Play 상태: 영업 시작 / 상점 이용 불가 / 주문 생성 ON");
+        if (startObject != null)
+            startObject.SetActive(false);
+
+        Debug.Log("[FSM] Play 상태: 영업 시작 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 ON");
     }
 
     public void EnterResult()
@@ -93,7 +110,10 @@ public class GameFlowController : MonoBehaviour
         if (shopObject != null)
             shopObject.SetActive(false);
 
-        Debug.Log("[FSM] Result 상태: 결과창 표시 / 주문 생성 OFF");
+        if (startObject != null)
+            startObject.SetActive(false);
+
+        Debug.Log("[FSM] Result 상태: 결과창 표시 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 OFF");
 
         if (resultPanelUI != null)
             resultPanelUI.OpenResult();
@@ -149,6 +169,9 @@ public class GameFlowController : MonoBehaviour
             if (shopObject != null)
                 shopObject.SetActive(true);
 
+            if (startObject != null)
+                startObject.SetActive(true);
+
             Debug.Log("[FSM] Ready 상태 복원");
         }
         else if (currentState == GameFlowState.Play)
@@ -159,6 +182,9 @@ public class GameFlowController : MonoBehaviour
             if (shopObject != null)
                 shopObject.SetActive(false);
 
+            if (startObject != null)
+                startObject.SetActive(false);
+
             Debug.Log("[FSM] Play 상태 복원");
         }
         else if (currentState == GameFlowState.Result)
@@ -168,6 +194,9 @@ public class GameFlowController : MonoBehaviour
 
             if (shopObject != null)
                 shopObject.SetActive(false);
+
+            if (startObject != null)
+                startObject.SetActive(false);
 
             if (resultPanelUI != null)
                 resultPanelUI.OpenResult();
