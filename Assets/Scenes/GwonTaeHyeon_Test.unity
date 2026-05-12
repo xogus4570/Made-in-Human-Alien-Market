@@ -305,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item Description
+  m_text: paper
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1779119578, guid: f18dc6c7791733d4288153d9246d98f5, type: 3}
+  m_Sprite: {fileID: -631291505077362033, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item Description
+  m_text: ink
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5080,7 +5080,7 @@ GameObject:
   - component: {fileID: 635888324}
   - component: {fileID: 635888323}
   - component: {fileID: 635888322}
-  - component: {fileID: 635888321}
+  - component: {fileID: 635888325}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -5108,27 +5108,6 @@ RectTransform:
   m_AnchoredPosition: {x: -160, y: -430}
   m_SizeDelta: {x: 203.467, y: 57.495}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &635888321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635888319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shop: {fileID: 1184472597}
-  item:
-    id: 
-    itemType: 0
-    itemName: 
-    itemImage: {fileID: 0}
-    soldInShop: 0
-    shopPrice: 0
-    shopCount: 1
 --- !u!114 &635888322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5173,9 +5152,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 635888321}
-        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
-        m_MethodName: Buy
+      - m_Target: {fileID: 635888325}
+        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
+        m_MethodName: BuyGoodsUnlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5223,6 +5202,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635888319}
   m_CullTransparentMesh: 1
+--- !u!114 &635888325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635888319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
+  shop: {fileID: 279076401}
+  goodsItemId: GD_radiationSticker_A
+  price: 500
 --- !u!1 &644324925
 GameObject:
   m_ObjectHideFlags: 0
@@ -5782,10 +5776,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shop: {fileID: 279076401}
   item:
-    id: GEM_A
-    itemType: 2
-    itemName: 
-    itemImage: {fileID: 0}
+    id: MAT_slimink
+    itemType: 1
+    itemName: "\uC2AC\uB77C\uBC0D\uD06C"
+    itemImage: {fileID: -631291505077362033, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
     soldInShop: 1
     shopPrice: 0
     shopCount: 1
@@ -9809,13 +9803,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop: {fileID: 0}
+  shop: {fileID: 279076401}
   item:
-    id: 
-    itemType: 1
-    itemName: 
-    itemImage: {fileID: 0}
-    soldInShop: 0
+    id: GEM_A
+    itemType: 2
+    itemName: "\uC544\uCFE0\uC544\uB9C8\uB9B0"
+    itemImage: {fileID: 38388998177672520, guid: 883bb9ede4c04ea4c8708e9ddabb799d, type: 3}
+    soldInShop: 1
     shopPrice: 0
     shopCount: 1
 --- !u!114 &1028186810
@@ -14411,11 +14405,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shop: {fileID: 279076401}
   item:
-    id: 
+    id: MAT_paper
     itemType: 1
-    itemName: 
-    itemImage: {fileID: 0}
-    soldInShop: 0
+    itemName: "\uC885\uC774"
+    itemImage: {fileID: -6669755615570210135, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
+    soldInShop: 1
     shopPrice: 0
     shopCount: 1
 --- !u!114 &1597098422
@@ -17190,7 +17184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item Description
+  m_text: gem
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18561,7 +18555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -363.69928}
+  m_AnchoredPosition: {x: 8, y: -220}
   m_SizeDelta: {x: 112.91, y: 22.6014}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2048533310
@@ -18715,7 +18709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2049466265, guid: f18dc6c7791733d4288153d9246d98f5, type: 3}
+  m_Sprite: {fileID: -6669755615570210135, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19264,6 +19258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab19965a67756704392313551746c285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoodsUnlockManager
+  defaultUnlockedGoodsIds:
+  - GD_alienLanguageSticker_A
 --- !u!4 &2119698545
 Transform:
   m_ObjectHideFlags: 0
@@ -19553,7 +19549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 601639008, guid: f18dc6c7791733d4288153d9246d98f5, type: 3}
+  m_Sprite: {fileID: 38388998177672520, guid: 883bb9ede4c04ea4c8708e9ddabb799d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

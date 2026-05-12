@@ -96,6 +96,12 @@ public class Shop : MonoBehaviour
             return false;
         }
 
+        if (string.IsNullOrEmpty(upgradeId))
+        {
+            Debug.LogWarning("[Shop] upgradeId가 비어 있습니다.", this);
+            return false;
+        }
+
         if (!wallet.TryPay(price))
         {
             Debug.Log($"[Shop] 강화 구매 실패(골드 부족): {upgradeId}", this);
@@ -115,6 +121,67 @@ public class Shop : MonoBehaviour
             Refund(price);
 
         return success;
+    }
+
+    public bool BuyGoodsUnlock(string goodsItemId, int price)
+    {
+        if (string.IsNullOrEmpty(goodsItemId))
+        {
+            Debug.LogWarning("[Shop] goodsItemId가 비어 있습니다.", this);
+            return false;
+        }
+
+        if (wallet == null)
+        {
+            Debug.LogWarning("[Shop] wallet이 없습니다.", this);
+            return false;
+        }
+
+        if (!wallet.TryPay(price))
+        {
+            Debug.Log($"[Shop] 굿즈 해금 실패(골드 부족): {goodsItemId}", this);
+            return false;
+        }
+
+        if (ItemDataBase.instance == null)
+        {
+            Debug.LogWarning("[Shop] ItemDataBase.instance가 없습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        Item item = ItemDataBase.instance.GetById(goodsItemId);
+        if (item == null)
+        {
+            Debug.LogWarning($"[Shop] goodsItemId '{goodsItemId}'를 ItemDataBase에서 찾지 못했습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        if (item.itemType != ItemType.Goods)
+        {
+            Debug.LogWarning($"[Shop] 굿즈 타입이 아닙니다: {item.itemName}", this);
+            Refund(price);
+            return false;
+        }
+
+        if (GoodsUnlockManager.Instance == null)
+        {
+            Debug.LogWarning("[Shop] GoodsUnlockManager.Instance가 없습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        bool success = GoodsUnlockManager.Instance.Unlock(goodsItemId);
+
+        if (!success)
+        {
+            Refund(price);
+            return false;
+        }
+
+        Debug.Log($"[Shop] 굿즈 해금 완료: {item.itemName}", this);
+        return true;
     }
 
     private bool BuyMaterialOrGem(Item item)
