@@ -12,6 +12,12 @@ public class GameDataManager : MonoBehaviour
     public int level = 1;
     public int currentExp = 0;
 
+    [Header("시간 데이터")]
+    public int currentHour = 9;
+    public int currentMinute = 0;
+    public float timeTickTimer = 0f;
+    public float lastRealtime = 0f;
+
     [Header("FSM 상태 데이터")]
     public GameFlowState flowState = GameFlowState.Ready;
 
