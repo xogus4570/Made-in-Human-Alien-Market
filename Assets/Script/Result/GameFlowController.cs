@@ -27,7 +27,7 @@ public class GameFlowController : MonoBehaviour
     [Header("시간 설정")]
     [SerializeField] private int startHour = 9;
     [SerializeField] private int startMinute = 0;
-    [SerializeField] private int endHour = 12;
+    [SerializeField] private int endHour = 24;
     [SerializeField] private int endMinute = 0;
 
     [Header("시간 흐름 설정")]
@@ -356,7 +356,10 @@ public class GameFlowController : MonoBehaviour
     private void UpdateTimeUI()
     {
         if (timeText != null)
-            timeText.text = $"{CurrentHour:00}:{CurrentMinute:00}";
+        {
+            int displayHour = CurrentHour % 24;
+            timeText.text = $"{displayHour:00}:{CurrentMinute:00}";
+        }
     }
 
     private void ApplyStateWithoutTransition()
