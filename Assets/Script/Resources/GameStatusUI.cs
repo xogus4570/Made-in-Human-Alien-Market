@@ -124,22 +124,22 @@ public class GameStatusUI : MonoBehaviour
         }
 
         if (dayText != null)
-            dayText.text = $"{Data.day}일차";
+            dayText.text = $"{Data.day}";
 
         if (goldText != null)
-            goldText.text = $"골드: {Data.gold:N0}";
+            goldText.text = $"{Data.gold:N0}";
 
         if (influenceText != null)
-            influenceText.text = $"누적영향력: {Data.influence:N0}";
+            influenceText.text = $"{Data.influence:N0}";
 
         if (satisfactionText != null)
-            satisfactionText.text = $"고객만족도: {Data.satisfaction}";
+            satisfactionText.text = $"{Data.satisfaction}";
 
         if (levelText != null)
-            levelText.text = $"Lv. {Data.level}";
+            levelText.text = $"Lv.{Data.level}";
 
         if (expText != null)
-            expText.text = $"EXP: {Data.currentExp} / {maxExp}";
+            expText.text = $"{Data.currentExp} / {maxExp}";
 
         if (expSlider != null)
         {

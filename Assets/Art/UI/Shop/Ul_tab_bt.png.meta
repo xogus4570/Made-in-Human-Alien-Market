@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 87e7752b57be133498a827c855b8f627
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5495691892391006748
+    second: Ul_tab_bt_0
+  - first:
+      213: -9205508373795801708
+    second: Ul_tab_bt_1
+  - first:
+      213: 4557336453585851510
+    second: Ul_tab_bt_2
+  - first:
+      213: 1204446518987241137
+    second: Ul_tab_bt_3
+  - first:
+      213: -5119691781328765038
+    second: Ul_tab_bt_4
+  - first:
+      213: 6055546833961723180
+    second: Ul_tab_bt_5
+  - first:
+      213: -5748955084746661486
+    second: Ul_tab_bt_6
+  - first:
+      213: -6328061424152106042
+    second: Ul_tab_bt_7
+  - first:
+      213: 4787070161010608359
+    second: Ul_tab_bt_8
+  - first:
+      213: -6569204962906869597
+    second: Ul_tab_bt_9
+  - first:
+      213: -5237941628449225886
+    second: Ul_tab_bt_10
+  - first:
+      213: 3861225010634457567
+    second: Ul_tab_bt_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ul_tab_bt_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 903
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c12d5f0a8ae944c40800000000000000
+      internalID: 5495691892391006748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_1
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 905
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 495740b28e67f3080800000000000000
+      internalID: -9205508373795801708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 739
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6745ce5db59ee3f30800000000000000
+      internalID: 4557336453585851510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_3
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 739
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b6b0334abd07b010800000000000000
+      internalID: 1204446518987241137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 565
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f796e337333f8b0800000000000000
+      internalID: -5119691781328765038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_5
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 564
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25a70703cf990450800000000000000
+      internalID: 6055546833961723180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_6
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 389
+        width: 299
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 291eff74fcb9730b0800000000000000
+      internalID: -5748955084746661486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 388
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cbaf8889a53e28a0800000000000000
+      internalID: -6328061424152106042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_8
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 213
+        width: 299
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8c8edc2f61f6240800000000000000
+      internalID: 4787070161010608359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_9
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 215
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a0f33134ee75d4a0800000000000000
+      internalID: -6569204962906869597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_10
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 43
+        width: 299
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2638d0a37d71f47b0800000000000000
+      internalID: -5237941628449225886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ul_tab_bt_11
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 45
+        width: 301
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd188b480b3d59530800000000000000
+      internalID: 3861225010634457567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ul_tab_bt_0: 5495691892391006748
+      Ul_tab_bt_1: -9205508373795801708
+      Ul_tab_bt_10: -5237941628449225886
+      Ul_tab_bt_11: 3861225010634457567
+      Ul_tab_bt_2: 4557336453585851510
+      Ul_tab_bt_3: 1204446518987241137
+      Ul_tab_bt_4: -5119691781328765038
+      Ul_tab_bt_5: 6055546833961723180
+      Ul_tab_bt_6: -5748955084746661486
+      Ul_tab_bt_7: -6328061424152106042
+      Ul_tab_bt_8: 4787070161010608359
+      Ul_tab_bt_9: -6569204962906869597
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

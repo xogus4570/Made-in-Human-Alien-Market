@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 955a73c729eff8a4f9848684da909362
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8143147745810985814
+    second: checker_0
+  - first:
+      213: -1813906250343060676
+    second: checker_1
+  - first:
+      213: -9129758076444161343
+    second: checker_2
+  - first:
+      213: 4825700556494603447
+    second: checker_3
+  - first:
+      213: -5951827354068345480
+    second: checker_4
+  - first:
+      213: 1193673778716983067
+    second: checker_5
+  - first:
+      213: -1622855245815237359
+    second: checker_6
+  - first:
+      213: 4935995841121388980
+    second: checker_7
+  - first:
+      213: -1643091978582516924
+    second: checker_8
+  - first:
+      213: -8302504103849584219
+    second: checker_9
+  - first:
+      213: -5793105329354280580
+    second: checker_10
+  - first:
+      213: -8424540192840036338
+    second: checker_11
+  - first:
+      213: -2315058001683096402
+    second: checker_12
+  - first:
+      213: 6537101725551905775
+    second: checker_13
+  - first:
+      213: -2388416786669373485
+    second: checker_14
+  - first:
+      213: 3575970929551023233
+    second: checker_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: checker_0
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1019
+        width: 128
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aacc969f44abdfe80800000000000000
+      internalID: -8143147745810985814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1017
+        width: 128
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3be07430e5b3d6e0800000000000000
+      internalID: -1813906250343060676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_2
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 1019
+        width: 128
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1caca48a6659c4180800000000000000
+      internalID: -9129758076444161343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_3
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1018
+        width: 128
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b40446a61558f240800000000000000
+      internalID: 4825700556494603447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 670
+        width: 128
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d9d4c3e8cd66da0800000000000000
+      internalID: -5951827354068345480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_5
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 670
+        width: 128
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1fbf163af7c09010800000000000000
+      internalID: 1193673778716983067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_6
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 670
+        width: 129
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115bd4f80c57a79e0800000000000000
+      internalID: -1622855245815237359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_7
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 671
+        width: 128
+        height: 332
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b988d2c01e208440800000000000000
+      internalID: 4935995841121388980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_8
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 334
+        width: 120
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b9b4b0d809239e0800000000000000
+      internalID: -1643091978582516924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_9
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 334
+        width: 120
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a992df818497cc80800000000000000
+      internalID: -8302504103849584219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_10
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 334
+        width: 119
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c717a696561ca9fa0800000000000000
+      internalID: -5793105329354280580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_11
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 333
+        width: 121
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e00d4c96455061b80800000000000000
+      internalID: -8424540192840036338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_12
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 0
+        width: 123
+        height: 331
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eacd04f53034fdfd0800000000000000
+      internalID: -2315058001683096402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_13
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 2
+        width: 126
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb4d14626378ba50800000000000000
+      internalID: 6537101725551905775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_14
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 0
+        width: 122
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d7fdfe3693aaded0800000000000000
+      internalID: -2388416786669373485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checker_15
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 0
+        width: 129
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c13073d9660a130800000000000000
+      internalID: 3575970929551023233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9afbd5ee29a36c84cbba2efb26faf499
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      checker_0: -8143147745810985814
+      checker_1: -1813906250343060676
+      checker_10: -5793105329354280580
+      checker_11: -8424540192840036338
+      checker_12: -2315058001683096402
+      checker_13: 6537101725551905775
+      checker_14: -2388416786669373485
+      checker_15: 3575970929551023233
+      checker_2: -9129758076444161343
+      checker_3: 4825700556494603447
+      checker_4: -5951827354068345480
+      checker_5: 1193673778716983067
+      checker_6: -1622855245815237359
+      checker_7: 4935995841121388980
+      checker_8: -1643091978582516924
+      checker_9: -8302504103849584219
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

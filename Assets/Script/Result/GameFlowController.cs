@@ -11,6 +11,7 @@ public class GameFlowController : MonoBehaviour
     [Header("기본 연결")]
     [SerializeField] private GameStatusUI gameStatusUI;
     [SerializeField] private ResultPanelUI resultPanelUI;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
 
     [Header("영업 제어")]
     [SerializeField] private PhoneOrderAutoSpawner phoneOrderAutoSpawner;
@@ -160,6 +161,9 @@ public class GameFlowController : MonoBehaviour
         if (startObject != null)
             startObject.SetActive(true);
 
+        if (playerAnimationController != null)
+            playerAnimationController.SetMasked(false);
+
         Debug.Log("[FSM] Ready 상태: 준비 단계 / 상점 이용 가능 / 영업 시작 버튼 ON / 주문 생성 OFF / 시간 09:00");
     }
 
@@ -183,6 +187,9 @@ public class GameFlowController : MonoBehaviour
         if (startObject != null)
             startObject.SetActive(false);
 
+        if (playerAnimationController != null)
+            playerAnimationController.SetMasked(true);
+
         Debug.Log("[FSM] Play 상태: 영업 시작 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 ON / 시간 흐름 시작");
     }
 
@@ -204,6 +211,9 @@ public class GameFlowController : MonoBehaviour
 
         if (startObject != null)
             startObject.SetActive(false);
+
+        if (playerAnimationController != null)
+            playerAnimationController.SetMasked(true);
 
         Debug.Log("[FSM] Result 상태: 결과창 표시 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 OFF / 시간 정지");
 
