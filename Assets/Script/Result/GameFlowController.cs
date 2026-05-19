@@ -213,7 +213,7 @@ public class GameFlowController : MonoBehaviour
             startObject.SetActive(false);
 
         if (playerAnimationController != null)
-            playerAnimationController.SetMasked(true);
+            playerAnimationController.SetMasked(true);ApplyStateWithoutTransition();
 
         Debug.Log("[FSM] Result 상태: 결과창 표시 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 OFF / 시간 정지");
 
@@ -388,6 +388,9 @@ public class GameFlowController : MonoBehaviour
             if (startObject != null)
                 startObject.SetActive(true);
 
+            if (playerAnimationController != null)
+                playerAnimationController.SetMasked(false);
+
             Debug.Log("[FSM] Ready 상태 복원");
         }
         else if (currentState == GameFlowState.Play)
@@ -407,6 +410,9 @@ public class GameFlowController : MonoBehaviour
             if (startObject != null)
                 startObject.SetActive(false);
 
+            if (playerAnimationController != null)
+                playerAnimationController.SetMasked(true);
+
             Debug.Log("[FSM] Play 상태 복원");
         }
         else if (currentState == GameFlowState.Result)
@@ -425,6 +431,9 @@ public class GameFlowController : MonoBehaviour
 
             if (resultPanelUI != null)
                 resultPanelUI.OpenResult();
+
+            if (playerAnimationController != null)
+                playerAnimationController.SetMasked(true);
 
             Debug.Log("[FSM] Result 상태 복원");
         }
