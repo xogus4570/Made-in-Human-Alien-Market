@@ -14,4 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame_Crafting table.unity
     guid: d3f03b66b80a2774f8bacb2cd15d2041
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Print.unity
+    guid: bb8190c9c6226384e89eac6327d34211
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Packing.unity
+    guid: 0ee2a0d42d3876f4aaff15f7c99dc0cb
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
