@@ -9,10 +9,16 @@ public abstract class ProductionStation : MonoBehaviour, IInteractable
 
     public void OnInteract(GameObject by)
     {
+        if (GameFlowController.Instance != null &&
+            GameFlowController.Instance.currentState != GameFlowState.Play)
+        {
+            Debug.Log($"[ProductionStation] {StationName}은 영업 중(Play 상태)일 때만 사용할 수 있습니다.");
+            return;
+        }
+
         Debug.Log($"{StationName} 상호작용 시작");
         Produce(by);
     }
 
     public string GetInteractionName() => $"{StationName} 사용하기";
-
 }
