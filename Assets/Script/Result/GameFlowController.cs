@@ -25,6 +25,9 @@ public class GameFlowController : MonoBehaviour
     [Header("시간 UI")]
     [SerializeField] private Text timeText;
 
+    [Header("낮/밤 오버레이")]
+    [SerializeField] private Image dayNightOverlay;
+
     [Header("시간 설정")]
     [SerializeField] private int startHour = 9;
     [SerializeField] private int startMinute = 0;
@@ -37,6 +40,28 @@ public class GameFlowController : MonoBehaviour
 
     [Header("테스트 키 설정")]
     [SerializeField] private bool enableResultTestKey = false;
+
+    [Header("상태별 낮/밤 알파값")]
+    [SerializeField] private float readyOverlayAlpha = 0.75f;
+    [SerializeField] private float resultOverlayAlpha = 0.00f;
+
+    [Header("Play 시간대별 낮/밤 알파값")]
+    [SerializeField] private float alpha09 = 0.05f;
+    [SerializeField] private float alpha10 = 0.05f;
+    [SerializeField] private float alpha11 = 0.05f;
+    [SerializeField] private float alpha12 = 0.00f;
+    [SerializeField] private float alpha13 = 0.00f;
+    [SerializeField] private float alpha14 = 0.05f;
+    [SerializeField] private float alpha15 = 0.10f;
+    [SerializeField] private float alpha16 = 0.20f;
+    [SerializeField] private float alpha17 = 0.35f;
+    [SerializeField] private float alpha18 = 0.50f;
+    [SerializeField] private float alpha19 = 0.60f;
+    [SerializeField] private float alpha20 = 0.70f;
+    [SerializeField] private float alpha21 = 0.80f;
+    [SerializeField] private float alpha22 = 0.85f;
+    [SerializeField] private float alpha23 = 0.90f;
+    [SerializeField] private float alpha24 = 0.95f;
 
     private bool isTimeRunning;
 
@@ -111,6 +136,9 @@ public class GameFlowController : MonoBehaviour
 
     private void Start()
     {
+        if (dayNightOverlay != null)
+            dayNightOverlay.raycastTarget = false;
+
         if (GameDataManager.Instance != null)
         {
             currentState = GameDataManager.Instance.flowState;
@@ -126,8 +154,6 @@ public class GameFlowController : MonoBehaviour
     {
         UpdateBusinessTime();
 
-        // 테스트용 Result 전환 키
-        // 기본값은 비활성화이며, Inspector에서 enableResultTestKey를 체크하면 사용 가능
         if (enableResultTestKey &&
             currentState == GameFlowState.Play &&
             (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Alpha3)))
@@ -156,6 +182,7 @@ public class GameFlowController : MonoBehaviour
 
         isTimeRunning = false;
         ResetBusinessTime();
+        SetDayNightOverlayAlpha(readyOverlayAlpha);
 
         if (phoneOrderAutoSpawner != null)
             phoneOrderAutoSpawner.enabled = false;
@@ -182,6 +209,7 @@ public class GameFlowController : MonoBehaviour
         ResetBusinessTime();
         LastRealtime = Time.realtimeSinceStartup;
         isTimeRunning = true;
+        UpdateDayNightByCurrentTime();
 
         if (phoneOrderAutoSpawner != null)
             phoneOrderAutoSpawner.enabled = true;
@@ -207,6 +235,7 @@ public class GameFlowController : MonoBehaviour
 
         isTimeRunning = false;
         UpdateTimeUI();
+        SetDayNightOverlayAlpha(resultOverlayAlpha);
 
         if (phoneOrderAutoSpawner != null)
             phoneOrderAutoSpawner.enabled = false;
@@ -285,6 +314,7 @@ public class GameFlowController : MonoBehaviour
 
             AddGameMinutes(gameMinutePerTick);
             UpdateTimeUI();
+            UpdateDayNightByCurrentTime();
 
             if (IsBusinessTimeEnded())
             {
@@ -303,6 +333,7 @@ public class GameFlowController : MonoBehaviour
         {
             LastRealtime = now;
             UpdateTimeUI();
+            UpdateDayNightByCurrentTime();
             return;
         }
 
@@ -312,6 +343,7 @@ public class GameFlowController : MonoBehaviour
         if (elapsed <= 0f)
         {
             UpdateTimeUI();
+            UpdateDayNightByCurrentTime();
             return;
         }
 
@@ -326,6 +358,7 @@ public class GameFlowController : MonoBehaviour
             if (IsBusinessTimeEnded())
             {
                 UpdateTimeUI();
+                UpdateDayNightByCurrentTime();
                 Debug.Log("[FSM] 씬 복귀 중 영업 시간이 종료되어 Result 상태로 전환합니다.");
                 EnterResult();
                 return;
@@ -333,6 +366,7 @@ public class GameFlowController : MonoBehaviour
         }
 
         UpdateTimeUI();
+        UpdateDayNightByCurrentTime();
     }
 
     private void ResetBusinessTime()
@@ -377,12 +411,81 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    private void UpdateDayNightByCurrentTime()
+    {
+        if (currentState != GameFlowState.Play)
+            return;
+
+        float timeValue = CurrentHour + (CurrentMinute / 60f);
+        float alpha = GetOverlayAlphaByTime(timeValue);
+
+        SetDayNightOverlayAlpha(alpha);
+    }
+
+    private float GetOverlayAlphaByTime(float timeValue)
+    {
+        if (timeValue < 10f)
+            return Mathf.Lerp(alpha09, alpha10, Mathf.InverseLerp(9f, 10f, timeValue));
+
+        if (timeValue < 11f)
+            return Mathf.Lerp(alpha10, alpha11, Mathf.InverseLerp(10f, 11f, timeValue));
+
+        if (timeValue < 12f)
+            return Mathf.Lerp(alpha11, alpha12, Mathf.InverseLerp(11f, 12f, timeValue));
+
+        if (timeValue < 13f)
+            return Mathf.Lerp(alpha12, alpha13, Mathf.InverseLerp(12f, 13f, timeValue));
+
+        if (timeValue < 14f)
+            return Mathf.Lerp(alpha13, alpha14, Mathf.InverseLerp(13f, 14f, timeValue));
+
+        if (timeValue < 15f)
+            return Mathf.Lerp(alpha14, alpha15, Mathf.InverseLerp(14f, 15f, timeValue));
+
+        if (timeValue < 16f)
+            return Mathf.Lerp(alpha15, alpha16, Mathf.InverseLerp(15f, 16f, timeValue));
+
+        if (timeValue < 17f)
+            return Mathf.Lerp(alpha16, alpha17, Mathf.InverseLerp(16f, 17f, timeValue));
+
+        if (timeValue < 18f)
+            return Mathf.Lerp(alpha17, alpha18, Mathf.InverseLerp(17f, 18f, timeValue));
+
+        if (timeValue < 19f)
+            return Mathf.Lerp(alpha18, alpha19, Mathf.InverseLerp(18f, 19f, timeValue));
+
+        if (timeValue < 20f)
+            return Mathf.Lerp(alpha19, alpha20, Mathf.InverseLerp(19f, 20f, timeValue));
+
+        if (timeValue < 21f)
+            return Mathf.Lerp(alpha20, alpha21, Mathf.InverseLerp(20f, 21f, timeValue));
+
+        if (timeValue < 22f)
+            return Mathf.Lerp(alpha21, alpha22, Mathf.InverseLerp(21f, 22f, timeValue));
+
+        if (timeValue < 23f)
+            return Mathf.Lerp(alpha22, alpha23, Mathf.InverseLerp(22f, 23f, timeValue));
+
+        return Mathf.Lerp(alpha23, alpha24, Mathf.InverseLerp(23f, 24f, timeValue));
+    }
+
+    private void SetDayNightOverlayAlpha(float alpha)
+    {
+        if (dayNightOverlay == null)
+            return;
+
+        Color color = dayNightOverlay.color;
+        color.a = Mathf.Clamp01(alpha);
+        dayNightOverlay.color = color;
+    }
+
     private void ApplyStateWithoutTransition()
     {
         if (currentState == GameFlowState.Ready)
         {
             isTimeRunning = false;
             ResetBusinessTime();
+            SetDayNightOverlayAlpha(readyOverlayAlpha);
 
             if (phoneOrderAutoSpawner != null)
                 phoneOrderAutoSpawner.enabled = false;
@@ -424,6 +527,7 @@ public class GameFlowController : MonoBehaviour
         {
             isTimeRunning = false;
             UpdateTimeUI();
+            SetDayNightOverlayAlpha(resultOverlayAlpha);
 
             if (phoneOrderAutoSpawner != null)
                 phoneOrderAutoSpawner.enabled = false;
