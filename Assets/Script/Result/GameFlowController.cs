@@ -40,6 +40,8 @@ public class GameFlowController : MonoBehaviour
 
     [Header("테스트 키 설정")]
     [SerializeField] private bool enableResultTestKey = false;
+    [SerializeField] private bool enableSatisfactionRecoverTestKey = false;
+    [SerializeField] private KeyCode recoverSatisfactionKey = KeyCode.Alpha8;
 
     [Header("상태별 낮/밤 알파값")]
     [SerializeField] private float readyOverlayAlpha = 0.75f;
@@ -160,6 +162,24 @@ public class GameFlowController : MonoBehaviour
         {
             EnterResult();
         }
+
+        if (enableSatisfactionRecoverTestKey &&
+            Input.GetKeyDown(recoverSatisfactionKey))
+        {
+            RecoverSatisfactionForTest();
+        }
+    }
+
+    private void RecoverSatisfactionForTest()
+    {
+        if (gameStatusUI == null)
+        {
+            Debug.LogWarning("[FSM-Test] GameStatusUI가 연결되지 않았습니다.");
+            return;
+        }
+
+        gameStatusUI.AddSatisfaction(100);
+        Debug.Log("[FSM-Test] 고객만족도를 100으로 회복했습니다.");
     }
 
     public void OnClickStartPlay()
