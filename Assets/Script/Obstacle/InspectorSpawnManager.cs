@@ -15,12 +15,22 @@ public class InspectorSpawnManager : MonoBehaviour
 
     private bool wasInspectorActive = false;
 
+    private void Awake()
+    {
+        ForceHideInspectorOnSceneLoad();
+    }
+
     private void Start()
     {
-        RestoreInspectorState();
+        ApplyInspectorStateByCondition();
     }
 
     private void Update()
+    {
+        ApplyInspectorStateByCondition();
+    }
+
+    private void ApplyInspectorStateByCondition()
     {
         if (gameStatusUI == null || inspectorObject == null)
             return;
@@ -35,7 +45,8 @@ public class InspectorSpawnManager : MonoBehaviour
             }
         }
 
-        bool shouldAppear = gameStatusUI.CurrentSatisfaction <= satisfactionThreshold;
+        int currentSatisfaction = gameStatusUI.CurrentSatisfaction;
+        bool shouldAppear = currentSatisfaction <= satisfactionThreshold;
 
         if (shouldAppear)
         {
@@ -43,42 +54,18 @@ public class InspectorSpawnManager : MonoBehaviour
         }
         else
         {
-            if (hideWhenConditionRecovered)
-                HideInspector();
-        }
-    }
-
-    private void RestoreInspectorState()
-    {
-        if (inspectorObject == null)
-            return;
-
-        if (GameDataManager.Instance != null &&
-            GameDataManager.Instance.inspectorWasActive &&
-            GameDataManager.Instance.hasInspectorPosition)
-        {
-            inspectorObject.transform.position = GameDataManager.Instance.inspectorPosition;
-            inspectorObject.SetActive(true);
-
-            SpriteRenderer spriteRenderer = inspectorObject.GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null)
-                spriteRenderer.enabled = true;
-
-            wasInspectorActive = true;
-
-            Debug.Log("[InspectorSpawnManager] 저장된 검문관 상태 복원");
-        }
-        else
-        {
-            inspectorObject.SetActive(false);
-            wasInspectorActive = false;
+            // 고객만족도가 기준보다 높으면 옵션과 상관없이 무조건 퇴장
+            HideInspector();
         }
     }
 
     private void ShowInspector()
     {
         if (wasInspectorActive && inspectorObject.activeSelf)
+        {
+            SaveInspectorPosition();
             return;
+        }
 
         if (GameDataManager.Instance != null &&
             GameDataManager.Instance.hasInspectorPosition)
@@ -104,18 +91,33 @@ public class InspectorSpawnManager : MonoBehaviour
             return;
 
         if (inspectorObject.activeSelf)
-            SaveInspectorPosition();
-
-        if (inspectorObject.activeSelf)
+        {
             inspectorObject.SetActive(false);
+            Debug.Log("[InspectorSpawnManager] 고객만족도 회복 또는 Play 상태 종료로 검문관 퇴장");
+        }
 
         wasInspectorActive = false;
         SaveInspectorState(false);
     }
 
+    private void ForceHideInspectorOnSceneLoad()
+    {
+        if (inspectorObject == null)
+            return;
+
+        inspectorObject.SetActive(false);
+        wasInspectorActive = false;
+
+        if (GameDataManager.Instance != null)
+            GameDataManager.Instance.inspectorWasActive = false;
+    }
+
     private void SaveInspectorPosition()
     {
         if (GameDataManager.Instance == null || inspectorObject == null)
+            return;
+
+        if (!inspectorObject.activeSelf)
             return;
 
         GameDataManager.Instance.inspectorPosition = inspectorObject.transform.position;

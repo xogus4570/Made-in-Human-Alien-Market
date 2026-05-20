@@ -243,6 +243,8 @@ MonoBehaviour:
   timeTickSec: 1
   gameMinutePerTick: 15
   enableResultTestKey: 0
+  enableSatisfactionRecoverTestKey: 1
+  recoverSatisfactionKey: 56
   readyOverlayAlpha: 0.75
   resultOverlayAlpha: 0
   alpha09: 0.05
@@ -18010,7 +18012,7 @@ GameObject:
   m_Layer: 0
   m_Name: CheckerPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
