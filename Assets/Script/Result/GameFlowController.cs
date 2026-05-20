@@ -35,6 +35,9 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private float timeTickSec = 5f;
     [SerializeField] private int gameMinutePerTick = 15;
 
+    [Header("테스트 키 설정")]
+    [SerializeField] private bool enableResultTestKey = false;
+
     private bool isTimeRunning;
 
     private int CurrentHour
@@ -123,8 +126,10 @@ public class GameFlowController : MonoBehaviour
     {
         UpdateBusinessTime();
 
-        // Result 전환은 아직 테스트용 R키/숫자 3키 유지
-        if (currentState == GameFlowState.Play &&
+        // 테스트용 Result 전환 키
+        // 기본값은 비활성화이며, Inspector에서 enableResultTestKey를 체크하면 사용 가능
+        if (enableResultTestKey &&
+            currentState == GameFlowState.Play &&
             (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
             EnterResult();
@@ -213,7 +218,7 @@ public class GameFlowController : MonoBehaviour
             startObject.SetActive(false);
 
         if (playerAnimationController != null)
-            playerAnimationController.SetMasked(true);ApplyStateWithoutTransition();
+            playerAnimationController.SetMasked(true);
 
         Debug.Log("[FSM] Result 상태: 결과창 표시 / 상점 이용 불가 / 영업 시작 버튼 OFF / 주문 생성 OFF / 시간 정지");
 
