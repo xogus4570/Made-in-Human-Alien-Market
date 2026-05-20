@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e38aac627ee7ca14fac778eff183993c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1420bb6f593cb5d4aa5bd21d72b57ac1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -825,8 +825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridRoot: {fileID: 1995987760154057552}
   backgroundImage: {fileID: 4064989569329377606}
-  materialBackground: {fileID: 21300000, guid: e38aac627ee7ca14fac778eff183993c, type: 3}
-  goodsBackground: {fileID: 21300000, guid: 1420bb6f593cb5d4aa5bd21d72b57ac1, type: 3}
+  materialBackground: {fileID: 21300000, guid: 1420bb6f593cb5d4aa5bd21d72b57ac1, type: 3}
+  goodsBackground: {fileID: 21300000, guid: e38aac627ee7ca14fac778eff183993c, type: 3}
   inventoryRoot: {fileID: 2823418616999161306}
 --- !u!1 &7394653268687324489
 GameObject:
