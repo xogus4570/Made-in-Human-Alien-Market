@@ -1,29 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private Transform gridRoot; // 슬롯들이 들어있는 부모
+    private enum InventoryTab
+    {
+        Material,
+        Goods
+    }
+
+    [Header("Slot Root")]
+    [SerializeField] private Transform gridRoot;
+
+    [Header("Background")]
+    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Sprite materialBackground;
+    [SerializeField] private Sprite goodsBackground;
+
+    [Header("Inventory Root")]
+    [SerializeField] private GameObject inventoryRoot;
+
     private InventorySlotUI[] uiSlots;
-    bool activeInventory = false;
+
+    private bool activeInventory = false;
+
+    private InventoryTab currentTab = InventoryTab.Material;
 
     private void Awake()
     {
-        if (gridRoot == null) gridRoot = transform;
+        if (gridRoot == null)
+            gridRoot = transform;
+
         uiSlots = gridRoot.GetComponentsInChildren<InventorySlotUI>(true);
     }
 
     private void Start()
     {
-        inventoryPanel.SetActive(activeInventory);
+        if (inventoryRoot != null)
+            inventoryRoot.SetActive(false);
 
-        //인벤토리 변경 이벤트 구독
+        if (backgroundImage != null && materialBackground != null)
+            backgroundImage.sprite = materialBackground;
+
         if (Inventory.instance != null)
             Inventory.instance.Changed += Refresh;
 
-        Refresh(); // 초기 1회 실행
+        Refresh();
     }
 
     private void OnDestroy()
@@ -37,23 +61,91 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             activeInventory = !activeInventory;
-            inventoryPanel.SetActive(activeInventory);
 
-            if (activeInventory) Refresh();
+            if (inventoryRoot != null)
+                inventoryRoot.SetActive(activeInventory);
+
+            if (activeInventory)
+                Refresh();
         }
     }
 
-    //슬롯 UI 새로고침
+    public void ShowMaterialTab()
+    {
+        currentTab = InventoryTab.Material;
+
+        if (backgroundImage != null && materialBackground != null)
+            backgroundImage.sprite = materialBackground;
+
+        Refresh();
+    }
+
+    public void ShowGoodsTab()
+    {
+        currentTab = InventoryTab.Goods;
+
+        if (backgroundImage != null && goodsBackground != null)
+            backgroundImage.sprite = goodsBackground;
+
+        Refresh();
+    }
+
+    public void CloseInventory()
+    {
+        activeInventory = false;
+
+        if (inventoryRoot != null)
+            inventoryRoot.SetActive(false);
+    }
+
     private void Refresh()
     {
-        // 먼저 다 비우기
-        foreach (var slot in uiSlots) slot.Clear();
+        if (uiSlots == null)
+            return;
 
-        // 인벤토리 데이터 가져오기
+        foreach (var slot in uiSlots)
+            slot.Clear();
+
+        if (Inventory.instance == null)
+            return;
+
         var slots = Inventory.instance.GetAllSlots();
-        int count = Mathf.Min(uiSlots.Length, slots.Count);
 
-        for (int i = 0; i < count; i++)
-            uiSlots[i].SetItem(slots[i].item, slots[i].count);
+        int index = 0;
+
+        foreach (var slot in slots)
+        {
+            if (slot.item == null)
+                continue;
+
+            if (!IsVisibleInCurrentTab(slot.item))
+                continue;
+
+            if (index >= uiSlots.Length)
+                break;
+
+            uiSlots[index].SetItem(slot.item, slot.count);
+
+            index++;
+        }
+    }
+
+    private bool IsVisibleInCurrentTab(Item item)
+    {
+        if (item == null)
+            return false;
+
+        if (currentTab == InventoryTab.Material)
+        {
+            return item.itemType == ItemType.Material
+                || item.itemType == ItemType.Gem;
+        }
+
+        if (currentTab == InventoryTab.Goods)
+        {
+            return item.itemType == ItemType.Goods;
+        }
+
+        return false;
     }
 }
