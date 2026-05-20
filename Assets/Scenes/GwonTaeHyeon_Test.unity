@@ -6488,7 +6488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -19.37}
+  m_AnchoredPosition: {x: 0, y: -19.371094}
   m_SizeDelta: {x: 0, y: 52.1471}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &765449229
@@ -13436,7 +13436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.3952, y: 10.177002}
+  m_AnchoredPosition: {x: 0.3952, y: 10.175781}
   m_SizeDelta: {x: 1334.4524, y: 49.1393}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1488515783
@@ -14629,6 +14629,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602380318}
   m_CullTransparentMesh: 1
+--- !u!224 &1627889483 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5117334542748791553, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+  m_PrefabInstance: {fileID: 8544774807356181971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1635593985
 GameObject:
   m_ObjectHideFlags: 0
@@ -20878,6 +20883,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 7003395821295497556, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7104379200566051276, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -21049,7 +21058,7 @@ PrefabInstance:
     - target: {fileID: 8200460185525587664, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: gridRoot
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1627889483}
     - target: {fileID: 8399815586693083432, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -21144,9 +21153,9 @@ SceneRoots:
   - {fileID: 1695527882}
   - {fileID: 1385765954}
   - {fileID: 1261880539}
-  - {fileID: 8544774807356181971}
   - {fileID: 1230357979}
   - {fileID: 63751119}
+  - {fileID: 8544774807356181971}
   - {fileID: 1127743060}
   - {fileID: 502472135}
   - {fileID: 1099317174711906348}
