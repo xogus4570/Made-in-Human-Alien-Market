@@ -2,70 +2,134 @@ using UnityEngine;
 
 public class InspectorSpawnManager : MonoBehaviour
 {
-    [Header("조건 확인")]
+    [Header("연결")]
     [SerializeField] private GameStatusUI gameStatusUI;
+    [SerializeField] private GameObject inspectorObject;
+
+    [Header("등장 조건")]
     [SerializeField] private int satisfactionThreshold = 50;
 
-    [Header("검문관")]
-    [SerializeField] private GameObject inspectorObject;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform player;
+    [Header("설정")]
+    [SerializeField] private bool onlyInPlayState = true;
+    [SerializeField] private bool hideWhenConditionRecovered = true;
 
-    [Header("등장 설정")]
-    [SerializeField] private bool hideWhenConditionRecovered = false;
-
-    private bool hasSpawned;
+    private bool wasInspectorActive = false;
 
     private void Start()
     {
-        if (inspectorObject != null)
-            inspectorObject.SetActive(false);
+        RestoreInspectorState();
     }
 
     private void Update()
     {
-        if (gameStatusUI == null) return;
-        if (inspectorObject == null) return;
-        if (GameFlowController.Instance == null) return;
+        if (gameStatusUI == null || inspectorObject == null)
+            return;
 
-        bool isPlayState = GameFlowController.Instance.currentState == GameFlowState.Play;
-        bool isLowSatisfaction = gameStatusUI.CurrentSatisfaction <= satisfactionThreshold;
-
-        if (isPlayState && isLowSatisfaction)
+        if (onlyInPlayState)
         {
-            SpawnInspector();
+            if (GameFlowController.Instance == null ||
+                GameFlowController.Instance.currentState != GameFlowState.Play)
+            {
+                HideInspector();
+                return;
+            }
         }
-        else if (hideWhenConditionRecovered)
+
+        bool shouldAppear = gameStatusUI.CurrentSatisfaction <= satisfactionThreshold;
+
+        if (shouldAppear)
         {
-            HideInspector();
+            ShowInspector();
+        }
+        else
+        {
+            if (hideWhenConditionRecovered)
+                HideInspector();
         }
     }
 
-    private void SpawnInspector()
+    private void RestoreInspectorState()
     {
-        if (hasSpawned && inspectorObject.activeSelf)
+        if (inspectorObject == null)
             return;
 
-        if (spawnPoint != null)
-            inspectorObject.transform.position = spawnPoint.position;
+        if (GameDataManager.Instance != null &&
+            GameDataManager.Instance.inspectorWasActive &&
+            GameDataManager.Instance.hasInspectorPosition)
+        {
+            inspectorObject.transform.position = GameDataManager.Instance.inspectorPosition;
+            inspectorObject.SetActive(true);
 
-        InspectorController controller = inspectorObject.GetComponent<InspectorController>();
-        if (controller != null && player != null)
-            controller.SetPlayer(player);
+            SpriteRenderer spriteRenderer = inspectorObject.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+                spriteRenderer.enabled = true;
+
+            wasInspectorActive = true;
+
+            Debug.Log("[InspectorSpawnManager] 저장된 검문관 상태 복원");
+        }
+        else
+        {
+            inspectorObject.SetActive(false);
+            wasInspectorActive = false;
+        }
+    }
+
+    private void ShowInspector()
+    {
+        if (wasInspectorActive && inspectorObject.activeSelf)
+            return;
+
+        if (GameDataManager.Instance != null &&
+            GameDataManager.Instance.hasInspectorPosition)
+        {
+            inspectorObject.transform.position = GameDataManager.Instance.inspectorPosition;
+        }
 
         inspectorObject.SetActive(true);
-        hasSpawned = true;
+
+        SpriteRenderer spriteRenderer = inspectorObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;
+
+        wasInspectorActive = true;
+        SaveInspectorState(true);
 
         Debug.Log("[InspectorSpawnManager] 고객만족도 저하로 검문관 등장");
     }
 
     private void HideInspector()
     {
-        if (!hasSpawned) return;
+        if (inspectorObject == null)
+            return;
 
-        inspectorObject.SetActive(false);
-        hasSpawned = false;
+        if (inspectorObject.activeSelf)
+            SaveInspectorPosition();
 
-        Debug.Log("[InspectorSpawnManager] 검문관 비활성화");
+        if (inspectorObject.activeSelf)
+            inspectorObject.SetActive(false);
+
+        wasInspectorActive = false;
+        SaveInspectorState(false);
+    }
+
+    private void SaveInspectorPosition()
+    {
+        if (GameDataManager.Instance == null || inspectorObject == null)
+            return;
+
+        GameDataManager.Instance.inspectorPosition = inspectorObject.transform.position;
+        GameDataManager.Instance.hasInspectorPosition = true;
+    }
+
+    private void SaveInspectorState(bool active)
+    {
+        if (GameDataManager.Instance == null)
+            return;
+
+        GameDataManager.Instance.inspectorWasActive = active;
+
+        if (active)
+            SaveInspectorPosition();
     }
 }

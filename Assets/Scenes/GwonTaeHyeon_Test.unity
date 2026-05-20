@@ -237,7 +237,7 @@ MonoBehaviour:
   timeText: {fileID: 1822250480}
   startHour: 9
   startMinute: 0
-  endHour: 24
+  endHour: 12
   endMinute: 0
   timeTickSec: 5
   gameMinutePerTick: 15
@@ -9376,6 +9376,11 @@ MonoBehaviour:
   timeTickTimer: 0
   lastRealtime: 0
   flowState: 0
+  hasPlayerPosition: 0
+  playerPosition: {x: 0, y: 0, z: 0}
+  hasInspectorPosition: 0
+  inspectorPosition: {x: 0, y: 0, z: 0}
+  inspectorWasActive: 0
 --- !u!4 &991211137
 Transform:
   m_ObjectHideFlags: 0
@@ -13105,7 +13110,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8143147745810985814, guid: 955a73c729eff8a4f9848684da909362, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17803,10 +17808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InspectorSpawnManager
   gameStatusUI: {fileID: 1939240710}
-  satisfactionThreshold: 95
   inspectorObject: {fileID: 1414178699}
-  spawnPoint: {fileID: 1932814514}
-  player: {fileID: 1099317174711906362}
+  satisfactionThreshold: 95
+  onlyInPlayState: 1
   hideWhenConditionRecovered: 0
 --- !u!4 &1932814514
 Transform:

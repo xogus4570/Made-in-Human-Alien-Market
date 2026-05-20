@@ -21,6 +21,14 @@ public class GameDataManager : MonoBehaviour
     [Header("FSM 상태 데이터")]
     public GameFlowState flowState = GameFlowState.Ready;
 
+    [Header("위치 데이터")]
+    public bool hasPlayerPosition = false;
+    public Vector3 playerPosition;
+
+    public bool hasInspectorPosition = false;
+    public Vector3 inspectorPosition;
+    public bool inspectorWasActive = false;
+
     private void Awake()
     {
         if (Instance == null)

@@ -20,15 +20,32 @@ public class InspectorController : MonoBehaviour
     private void OnEnable()
     {
         isWaiting = false;
+
+        if (GameDataManager.Instance != null &&
+            GameDataManager.Instance.hasInspectorPosition)
+        {
+            transform.position = GameDataManager.Instance.inspectorPosition;
+            Debug.Log("[InspectorController] 저장된 검문관 위치 복원");
+        }
+
+        SaveInspectorPosition();
     }
 
     private void Update()
     {
+        if (GameFlowController.Instance == null) return;
+        if (GameFlowController.Instance.currentState != GameFlowState.Play) return;
+
         if (player == null) return;
+
+        SaveInspectorPosition();
+
         if (isWaiting) return;
 
         FollowPlayer();
         TryInterruptPlayer();
+
+        SaveInspectorPosition();
     }
 
     private void FollowPlayer()
@@ -72,5 +89,15 @@ public class InspectorController : MonoBehaviour
     public void SetPlayer(Transform target)
     {
         player = target;
+    }
+
+    private void SaveInspectorPosition()
+    {
+        if (GameDataManager.Instance == null)
+            return;
+
+        GameDataManager.Instance.inspectorPosition = transform.position;
+        GameDataManager.Instance.hasInspectorPosition = true;
+        GameDataManager.Instance.inspectorWasActive = gameObject.activeSelf;
     }
 }

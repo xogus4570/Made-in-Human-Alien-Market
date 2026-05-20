@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerInterruption = GetComponent<PlayerInterruption>();
+
+        if (GameDataManager.Instance != null &&
+            GameDataManager.Instance.hasPlayerPosition)
+        {
+            transform.position = GameDataManager.Instance.playerPosition;
+            Debug.Log("[PlayerController] 저장된 플레이어 위치 복원");
+        }
     }
 
     void Update()
@@ -25,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
         input = input.sqrMagnitude > 1f ? input.normalized : input;
         MoveInput = input;
+
+        SavePlayerPosition();
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -43,5 +52,14 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = input * moveSpeed;
+    }
+
+    private void SavePlayerPosition()
+    {
+        if (GameDataManager.Instance == null)
+            return;
+
+        GameDataManager.Instance.playerPosition = transform.position;
+        GameDataManager.Instance.hasPlayerPosition = true;
     }
 }
