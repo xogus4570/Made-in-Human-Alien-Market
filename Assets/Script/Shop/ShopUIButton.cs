@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShopUIButton : MonoBehaviour
 {
     [SerializeField] private Shop shop;
-    [SerializeField] private Item item;
+    [SerializeField] private string itemId;
 
     public void Buy()
     {
@@ -13,9 +13,11 @@ public class ShopUIButton : MonoBehaviour
             return;
         }
 
+        Item item = ItemDataBase.instance.GetById(itemId);
+
         if (item == null)
         {
-            Debug.LogWarning("[ShopUIButton] Item이 연결되지 않았습니다.");
+            Debug.LogWarning($"[ShopUIButton] ItemDataBase에서 아이템을 찾지 못함: {itemId}");
             return;
         }
 

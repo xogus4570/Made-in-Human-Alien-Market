@@ -4236,7 +4236,7 @@ GameObject:
   - component: {fileID: 494890806}
   - component: {fileID: 494890805}
   - component: {fileID: 494890804}
-  - component: {fileID: 494890803}
+  - component: {fileID: 494890807}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -4263,21 +4263,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &494890803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494890801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_glowstoneDust
-  price: 500
 --- !u!114 &494890804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4322,9 +4307,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 494890803}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 494890807}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4372,6 +4357,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494890801}
   m_CullTransparentMesh: 1
+--- !u!114 &494890807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494890801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 596235234}
+  itemId: MAT_glowstoneDust
 --- !u!1 &502472133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4434,85 +4433,85 @@ MonoBehaviour:
     itemType: 1
     itemName: "\uAC10\uAD11\uC81C"
     itemImage: {fileID: -631291505077362033, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_pupil
     itemType: 1
     itemName: "\uB370\uAD74\uB370\uAD74 \uB208\uB3D9\uC790"
     itemImage: {fileID: -3928963311140158533, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_glowstoneDust
     itemType: 1
     itemName: "\uBC1C\uAD11\uC11D \uAC00\uB8E8"
     itemImage: {fileID: 4708945644992416466, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_cotton
     itemType: 1
     itemName: "\uC19C"
     itemImage: {fileID: 4374897360418955202, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_slimink
     itemType: 1
     itemName: "\uC2AC\uB77C\uBC0D\uD06C"
     itemImage: {fileID: 3241926749724796825, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_yarn
     itemType: 1
     itemName: "\uC2E4"
     itemImage: {fileID: -6000093190105701433, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_energyBeads
     itemType: 1
     itemName: "\uC5D0\uB108\uC9C0\uAD6C\uC2AC"
     itemImage: {fileID: 1561486126048805940, guid: df938b54c19a0c14a9c20c998e8c13f7, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_fabric
     itemType: 1
     itemName: "\uC6D0\uB2E8"
     itemImage: {fileID: -5997048623485614915, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_paper
     itemType: 1
     itemName: "\uC885\uC774"
     itemImage: {fileID: -6669755615570210135, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_chameleonSkin
     itemType: 1
     itemName: "\uCE74\uBA5C\uB808\uC628 \uD53C\uBD80"
     itemImage: {fileID: -1022575097926717546, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_plastic
     itemType: 1
     itemName: "\uD50C\uB77C\uC2A4\uD2F1"
     itemImage: {fileID: -7497164898897211560, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: MAT_planetPowder
     itemType: 1
     itemName: "\uD589\uC131 \uD30C\uC6B0\uB354"
     itemImage: {fileID: 6682134429341245594, guid: 2afeb4904077c0547a44dac65a1c04c4, type: 3}
-    soldInShop: 0
-    shopPrice: 0
+    soldInShop: 1
+    shopPrice: 500
     shopCount: 1
   - id: GD_alienLanguageSticker_A
     itemType: 0
@@ -5042,7 +5041,7 @@ GameObject:
   - component: {fileID: 514548560}
   - component: {fileID: 514548559}
   - component: {fileID: 514548558}
-  - component: {fileID: 514548557}
+  - component: {fileID: 514548561}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -5069,21 +5068,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &514548557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514548555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_energyBeads
-  price: 500
 --- !u!114 &514548558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,9 +5112,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 514548557}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 514548561}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5178,6 +5162,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514548555}
   m_CullTransparentMesh: 1
+--- !u!114 &514548561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514548555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1427271246}
+  itemId: MAT_energyBeads
 --- !u!1 &515250959
 GameObject:
   m_ObjectHideFlags: 0
@@ -7364,7 +7362,7 @@ GameObject:
   - component: {fileID: 719680809}
   - component: {fileID: 719680808}
   - component: {fileID: 719680807}
-  - component: {fileID: 719680806}
+  - component: {fileID: 719680810}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -7391,21 +7389,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &719680806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719680804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_fabric
-  price: 500
 --- !u!114 &719680807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7450,9 +7433,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719680806}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 719680810}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7500,6 +7483,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719680804}
   m_CullTransparentMesh: 1
+--- !u!114 &719680810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719680804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1101243202}
+  itemId: MAT_fabric
 --- !u!1 &725653337
 GameObject:
   m_ObjectHideFlags: 0
@@ -8207,7 +8204,7 @@ GameObject:
   - component: {fileID: 804705054}
   - component: {fileID: 804705053}
   - component: {fileID: 804705052}
-  - component: {fileID: 804705051}
+  - component: {fileID: 804705055}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -8234,21 +8231,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &804705051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804705049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_yarn
-  price: 500
 --- !u!114 &804705052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8293,9 +8275,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 804705051}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 804705055}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8343,6 +8325,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804705049}
   m_CullTransparentMesh: 1
+--- !u!114 &804705055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804705049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 353189264}
+  itemId: MAT_yarn
 --- !u!1 &811996740
 GameObject:
   m_ObjectHideFlags: 0
@@ -9170,14 +9166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 1920059647}
-  item:
-    id: 
-    itemType: 0
-    itemName: 
-    itemImage: {fileID: 0}
-    soldInShop: 0
-    shopPrice: 0
-    shopCount: 1
+  itemId: 
 --- !u!114 &878410788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11849,7 +11838,7 @@ GameObject:
   - component: {fileID: 1064064472}
   - component: {fileID: 1064064471}
   - component: {fileID: 1064064470}
-  - component: {fileID: 1064064469}
+  - component: {fileID: 1064064473}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -11876,21 +11865,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1064064469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064064467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_planetPowder
-  price: 500
 --- !u!114 &1064064470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11935,9 +11909,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1064064469}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1064064473}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11985,6 +11959,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064064467}
   m_CullTransparentMesh: 1
+--- !u!114 &1064064473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064064467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1121779618}
+  itemId: MAT_planetPowder
 --- !u!1 &1082423785
 GameObject:
   m_ObjectHideFlags: 0
@@ -13107,7 +13095,7 @@ GameObject:
   - component: {fileID: 1121849617}
   - component: {fileID: 1121849616}
   - component: {fileID: 1121849615}
-  - component: {fileID: 1121849614}
+  - component: {fileID: 1121849618}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -13134,21 +13122,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1121849614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121849612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_pupil
-  price: 500
 --- !u!114 &1121849615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13193,9 +13166,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1121849614}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1121849618}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13243,6 +13216,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121849612}
   m_CullTransparentMesh: 1
+--- !u!114 &1121849618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121849612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1428678120}
+  itemId: MAT_pupil
 --- !u!1 &1126411235
 GameObject:
   m_ObjectHideFlags: 0
@@ -17368,7 +17355,7 @@ GameObject:
   - component: {fileID: 1460528814}
   - component: {fileID: 1460528813}
   - component: {fileID: 1460528812}
-  - component: {fileID: 1460528811}
+  - component: {fileID: 1460528815}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -17395,21 +17382,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1460528811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460528809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_slimink
-  price: 500
 --- !u!114 &1460528812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17454,9 +17426,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1460528811}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1460528815}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17504,6 +17476,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460528809}
   m_CullTransparentMesh: 1
+--- !u!114 &1460528815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460528809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1446232081}
+  itemId: MAT_slimink
 --- !u!1 &1461675216
 GameObject:
   m_ObjectHideFlags: 0
@@ -18323,7 +18309,7 @@ GameObject:
   - component: {fileID: 1538351992}
   - component: {fileID: 1538351991}
   - component: {fileID: 1538351990}
-  - component: {fileID: 1538351989}
+  - component: {fileID: 1538351993}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -18350,21 +18336,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1538351989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538351987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_cotton
-  price: 500
 --- !u!114 &1538351990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18409,9 +18380,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1538351989}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1538351993}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18459,6 +18430,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538351987}
   m_CullTransparentMesh: 1
+--- !u!114 &1538351993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538351987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1990925896}
+  itemId: MAT_cotton
 --- !u!1 &1539117751
 GameObject:
   m_ObjectHideFlags: 0
@@ -18471,7 +18456,7 @@ GameObject:
   - component: {fileID: 1539117756}
   - component: {fileID: 1539117755}
   - component: {fileID: 1539117754}
-  - component: {fileID: 1539117753}
+  - component: {fileID: 1539117757}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -18498,21 +18483,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1539117753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539117751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_plastic
-  price: 500
 --- !u!114 &1539117754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18557,9 +18527,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1539117753}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1539117757}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18607,6 +18577,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539117751}
   m_CullTransparentMesh: 1
+--- !u!114 &1539117757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539117751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1523225953}
+  itemId: MAT_plastic
 --- !u!1 &1549544022
 GameObject:
   m_ObjectHideFlags: 0
@@ -19324,7 +19308,7 @@ GameObject:
   - component: {fileID: 1647981741}
   - component: {fileID: 1647981740}
   - component: {fileID: 1647981739}
-  - component: {fileID: 1647981738}
+  - component: {fileID: 1647981742}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -19351,21 +19335,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1647981738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647981736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_chameleonSkin
-  price: 500
 --- !u!114 &1647981739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19410,9 +19379,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1647981738}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1647981742}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19460,6 +19429,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647981736}
   m_CullTransparentMesh: 1
+--- !u!114 &1647981742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647981736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 2092526381}
+  itemId: MAT_chameleonSkin
 --- !u!1 &1650530564
 GameObject:
   m_ObjectHideFlags: 0
@@ -21464,7 +21447,7 @@ GameObject:
   - component: {fileID: 1807014745}
   - component: {fileID: 1807014744}
   - component: {fileID: 1807014743}
-  - component: {fileID: 1807014742}
+  - component: {fileID: 1807014746}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -21491,21 +21474,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1807014742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807014740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_phothResist
-  price: 500
 --- !u!114 &1807014743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21550,9 +21518,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1807014742}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 1807014746}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21600,6 +21568,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807014740}
   m_CullTransparentMesh: 1
+--- !u!114 &1807014746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807014740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 725653339}
+  itemId: MAT_phothResist
 --- !u!1 &1808702403
 GameObject:
   m_ObjectHideFlags: 0
@@ -23662,14 +23644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 705752765}
-  item:
-    id: 
-    itemType: 0
-    itemName: 
-    itemImage: {fileID: 0}
-    soldInShop: 0
-    shopPrice: 0
-    shopCount: 1
+  itemId: 
 --- !u!114 &1988170153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25299,7 +25274,7 @@ GameObject:
   - component: {fileID: 2100486865}
   - component: {fileID: 2100486864}
   - component: {fileID: 2100486863}
-  - component: {fileID: 2100486862}
+  - component: {fileID: 2100486866}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -25326,21 +25301,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177.1, y: -259.2}
   m_SizeDelta: {x: 191.2111, y: 91.1439}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2100486862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100486860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c1dce10bd142f944840d6dab984a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
-  shop: {fileID: 279076401}
-  goodsItemId: MAT_paper
-  price: 500
 --- !u!114 &2100486863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25385,9 +25345,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2100486862}
-        m_TargetAssemblyTypeName: ShopGoodsUnlockButton, Assembly-CSharp
-        m_MethodName: BuyGoodsUnlock
+      - m_Target: {fileID: 2100486866}
+        m_TargetAssemblyTypeName: ShopUIButton, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25435,6 +25395,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100486860}
   m_CullTransparentMesh: 1
+--- !u!114 &2100486866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100486860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db1535e8ac134d8b7d3cd6881c9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopUIButton
+  shop: {fileID: 1231982838}
+  itemId: MAT_paper
 --- !u!1 &2103502970
 GameObject:
   m_ObjectHideFlags: 0
