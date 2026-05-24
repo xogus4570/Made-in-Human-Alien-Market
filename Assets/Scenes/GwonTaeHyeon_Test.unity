@@ -6499,7 +6499,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 356286829}
   labelText: {fileID: 0}
   normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  selectedBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   normalTextColor: {r: 0, g: 0, b: 0, a: 1}
   selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &358604374
@@ -8426,7 +8426,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 455391729}
   labelText: {fileID: 0}
   normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  selectedBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   normalTextColor: {r: 0, g: 0, b: 0, a: 1}
   selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &469585379
@@ -35590,7 +35590,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 1526719908}
   labelText: {fileID: 0}
   normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  selectedBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   normalTextColor: {r: 0, g: 0, b: 0, a: 1}
   selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1534775413
@@ -40795,7 +40795,7 @@ MonoBehaviour:
   backgroundImage: {fileID: 1709654545}
   labelText: {fileID: 0}
   normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  selectedBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   normalTextColor: {r: 0, g: 0, b: 0, a: 1}
   selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1710789829
@@ -45727,7 +45727,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
