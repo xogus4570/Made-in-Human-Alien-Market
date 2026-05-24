@@ -25812,7 +25812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 94.39746, y: 463.82217}
+  m_AnchoredPosition: {x: 0.0010375977, y: 463.82217}
   m_SizeDelta: {x: 0, y: 339.6447}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1116069833
@@ -28971,7 +28971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 94.39746, y: 463.82217}
+  m_AnchoredPosition: {x: 0.0009765625, y: 463.82217}
   m_SizeDelta: {x: 4510, y: 339.6447}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1242577694
@@ -29128,10 +29128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900cb131b4b4b6f4a927639dee3e580f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopTabController
-  materialContent: {fileID: 1116069831}
-  gemContent: {fileID: 1242577692}
-  upgradeContent: {fileID: 1185781564}
-  goodsContent: {fileID: 17160475}
+  scrollRect: {fileID: 2078123682}
+  materialContent: {fileID: 1116069832}
+  gemContent: {fileID: 1242577693}
+  upgradeContent: {fileID: 1185781565}
+  goodsContent: {fileID: 17160476}
   materialTabVisual: {fileID: 1709654547}
   gemTabVisual: {fileID: 455391731}
   upgradeTabVisual: {fileID: 1526719910}

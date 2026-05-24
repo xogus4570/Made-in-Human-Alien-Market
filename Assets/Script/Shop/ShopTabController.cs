@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopTabController : MonoBehaviour
 {
+    [Header("Scroll Rect")]
+    [SerializeField] private ScrollRect scrollRect;
+
     [Header("탭 Content")]
-    [SerializeField] private GameObject materialContent;
-    [SerializeField] private GameObject gemContent;
-    [SerializeField] private GameObject upgradeContent;
-    [SerializeField] private GameObject goodsContent;
+    [SerializeField] private RectTransform materialContent;
+    [SerializeField] private RectTransform gemContent;
+    [SerializeField] private RectTransform upgradeContent;
+    [SerializeField] private RectTransform goodsContent;
 
     [Header("탭 버튼 외형")]
     [SerializeField] private ShopTabButtonUI materialTabVisual;
@@ -46,21 +50,42 @@ public class ShopTabController : MonoBehaviour
         RefreshTab();
     }
 
-    public void RefreshTab()
+    private void RefreshTab()
     {
         if (materialContent != null)
-            materialContent.SetActive(currentTab == ShopTabType.Material);
+            materialContent.gameObject.SetActive(currentTab == ShopTabType.Material);
 
         if (gemContent != null)
-            gemContent.SetActive(currentTab == ShopTabType.Gem);
+            gemContent.gameObject.SetActive(currentTab == ShopTabType.Gem);
 
         if (upgradeContent != null)
-            upgradeContent.SetActive(currentTab == ShopTabType.Upgrade);
+            upgradeContent.gameObject.SetActive(currentTab == ShopTabType.Upgrade);
 
         if (goodsContent != null)
-            goodsContent.SetActive(currentTab == ShopTabType.Goods);
+            goodsContent.gameObject.SetActive(currentTab == ShopTabType.Goods);
 
+        if (scrollRect != null)
+            scrollRect.content = GetCurrentContent();
+
+        ResetCurrentTabPosition();
         RefreshTabButtonVisual();
+    }
+
+    private RectTransform GetCurrentContent()
+    {
+        switch (currentTab)
+        {
+            case ShopTabType.Material:
+                return materialContent;
+            case ShopTabType.Gem:
+                return gemContent;
+            case ShopTabType.Upgrade:
+                return upgradeContent;
+            case ShopTabType.Goods:
+                return goodsContent;
+        }
+
+        return materialContent;
     }
 
     private void RefreshTabButtonVisual()
@@ -80,24 +105,13 @@ public class ShopTabController : MonoBehaviour
 
     public void ResetCurrentTabPosition()
     {
-        ResetContentPosition(materialContent);
-        ResetContentPosition(gemContent);
-        ResetContentPosition(upgradeContent);
-        ResetContentPosition(goodsContent);
-    }
+        RectTransform content = GetCurrentContent();
 
-    private void ResetContentPosition(GameObject contentObject)
-    {
-        if (contentObject == null)
+        if (content == null)
             return;
 
-        RectTransform rect = contentObject.GetComponent<RectTransform>();
-
-        if (rect == null)
-            return;
-
-        Vector2 pos = rect.anchoredPosition;
-        pos.y = 443.9999f;
-        rect.anchoredPosition = pos;
+        Vector2 pos = content.anchoredPosition;
+        pos.x = 0f;
+        content.anchoredPosition = pos;
     }
 }
