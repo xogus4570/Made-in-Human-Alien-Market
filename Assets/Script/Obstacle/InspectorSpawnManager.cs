@@ -11,7 +11,6 @@ public class InspectorSpawnManager : MonoBehaviour
 
     [Header("설정")]
     [SerializeField] private bool onlyInPlayState = true;
-    [SerializeField] private bool hideWhenConditionRecovered = true;
 
     private bool wasInspectorActive = false;
 

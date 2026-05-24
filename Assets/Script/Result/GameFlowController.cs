@@ -40,8 +40,14 @@ public class GameFlowController : MonoBehaviour
 
     [Header("테스트 키 설정")]
     [SerializeField] private bool enableResultTestKey = false;
+
     [SerializeField] private bool enableSatisfactionRecoverTestKey = false;
     [SerializeField] private KeyCode recoverSatisfactionKey = KeyCode.Alpha8;
+    [SerializeField] private int recoverSatisfactionAmount = 100;
+
+    [SerializeField] private bool enableSatisfactionDecreaseTestKey = false;
+    [SerializeField] private KeyCode decreaseSatisfactionKey = KeyCode.Alpha9;
+    [SerializeField] private int decreaseSatisfactionAmount = 10;
 
     [Header("상태별 낮/밤 알파값")]
     [SerializeField] private float readyOverlayAlpha = 0.75f;
@@ -168,6 +174,12 @@ public class GameFlowController : MonoBehaviour
         {
             RecoverSatisfactionForTest();
         }
+
+        if (enableSatisfactionDecreaseTestKey &&
+            Input.GetKeyDown(decreaseSatisfactionKey))
+        {
+            DecreaseSatisfactionForTest();
+        }
     }
 
     private void RecoverSatisfactionForTest()
@@ -178,8 +190,20 @@ public class GameFlowController : MonoBehaviour
             return;
         }
 
-        gameStatusUI.AddSatisfaction(100);
-        Debug.Log("[FSM-Test] 고객만족도를 100으로 회복했습니다.");
+        gameStatusUI.AddSatisfaction(recoverSatisfactionAmount);
+        Debug.Log($"[FSM-Test] 고객만족도를 {recoverSatisfactionAmount} 회복했습니다.");
+    }
+
+    private void DecreaseSatisfactionForTest()
+    {
+        if (gameStatusUI == null)
+        {
+            Debug.LogWarning("[FSM-Test] GameStatusUI가 연결되지 않았습니다.");
+            return;
+        }
+
+        gameStatusUI.ReduceSatisfaction(decreaseSatisfactionAmount);
+        Debug.Log($"[FSM-Test] 고객만족도를 {decreaseSatisfactionAmount} 감소시켰습니다.");
     }
 
     public void OnClickStartPlay()
