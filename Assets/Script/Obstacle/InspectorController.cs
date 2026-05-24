@@ -17,21 +17,47 @@ public class InspectorController : MonoBehaviour
 
     private bool isWaiting;
 
+    // CheckerAnimationController가 읽을 검문관 이동 방향
+    public Vector2 MoveDirection { get; private set; }
+
     private void OnEnable()
     {
         isWaiting = false;
+        MoveDirection = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        MoveDirection = Vector2.zero;
     }
 
     private void Update()
     {
-        if (GameFlowController.Instance == null) return;
-        if (GameFlowController.Instance.currentState != GameFlowState.Play) return;
+        if (GameFlowController.Instance == null)
+        {
+            MoveDirection = Vector2.zero;
+            return;
+        }
 
-        if (player == null) return;
+        if (GameFlowController.Instance.currentState != GameFlowState.Play)
+        {
+            MoveDirection = Vector2.zero;
+            return;
+        }
+
+        if (player == null)
+        {
+            MoveDirection = Vector2.zero;
+            return;
+        }
 
         SaveInspectorPosition();
 
-        if (isWaiting) return;
+        if (isWaiting)
+        {
+            MoveDirection = Vector2.zero;
+            return;
+        }
 
         FollowPlayer();
         TryInterruptPlayer();
@@ -44,9 +70,15 @@ public class InspectorController : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= stopDistance)
+        {
+            MoveDirection = Vector2.zero;
             return;
+        }
 
         Vector2 direction = (player.position - transform.position).normalized;
+
+        MoveDirection = direction;
+
         transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
     }
 
@@ -71,6 +103,7 @@ public class InspectorController : MonoBehaviour
     private IEnumerator WaitAfterHitRoutine()
     {
         isWaiting = true;
+        MoveDirection = Vector2.zero;
 
         yield return new WaitForSeconds(waitAfterHit);
 
