@@ -214,6 +214,84 @@ public class Shop : MonoBehaviour
         Debug.Log($"[Shop] 굿즈 해금 완료: {item.itemName}", this);
         return true;
     }
+    public bool BuyGoodsUnlock(string[] goodsItemIds, int price)
+    {
+        if (goodsItemIds == null || goodsItemIds.Length == 0)
+        {
+            Debug.LogWarning("[Shop] goodsItemIds가 비어 있습니다.", this);
+            return false;
+        }
+
+        if (wallet == null)
+        {
+            Debug.LogWarning("[Shop] wallet이 없습니다.", this);
+            return false;
+        }
+
+        if (!wallet.TryPay(price))
+        {
+            Debug.Log($"[Shop] 굿즈 묶음 해금 실패(골드 부족)", this);
+            return false;
+        }
+
+        if (ItemDataBase.instance == null)
+        {
+            Debug.LogWarning("[Shop] ItemDataBase.instance가 없습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        if (GoodsUnlockManager.Instance == null)
+        {
+            Debug.LogWarning("[Shop] GoodsUnlockManager.Instance가 없습니다.", this);
+            Refund(price);
+            return false;
+        }
+
+        bool unlockedAny = false;
+
+        for (int i = 0; i < goodsItemIds.Length; i++)
+        {
+            string goodsItemId = goodsItemIds[i];
+
+            if (string.IsNullOrEmpty(goodsItemId))
+            {
+                Debug.LogWarning("[Shop] 비어 있는 goodsItemId가 있습니다.", this);
+                continue;
+            }
+
+            Item item = ItemDataBase.instance.GetById(goodsItemId);
+
+            if (item == null)
+            {
+                Debug.LogWarning($"[Shop] goodsItemId '{goodsItemId}'를 ItemDataBase에서 찾지 못했습니다.", this);
+                continue;
+            }
+
+            if (item.itemType != ItemType.Goods)
+            {
+                Debug.LogWarning($"[Shop] 굿즈 타입이 아닙니다: {item.itemName}", this);
+                continue;
+            }
+
+            bool success = GoodsUnlockManager.Instance.Unlock(goodsItemId);
+
+            if (success)
+            {
+                unlockedAny = true;
+                Debug.Log($"[Shop] 굿즈 해금 완료: {item.itemName}", this);
+            }
+        }
+
+        if (!unlockedAny)
+        {
+            Refund(price);
+            Debug.LogWarning("[Shop] 해금된 굿즈가 없어 환불합니다.", this);
+            return false;
+        }
+
+        return true;
+    }
 
     private void Refund(int amount)
     {

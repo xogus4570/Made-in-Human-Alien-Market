@@ -3,7 +3,11 @@ using UnityEngine;
 public class ShopGoodsUnlockButton : MonoBehaviour
 {
     [SerializeField] private Shop shop;
-    [SerializeField] private string goodsItemId;
+
+    [Header("해금할 굿즈 ID 목록")]
+    [SerializeField] private string[] goodsItemIds;
+
+    [Header("가격")]
     [SerializeField] private int price = 500;
 
     public void BuyGoodsUnlock()
@@ -14,17 +18,17 @@ public class ShopGoodsUnlockButton : MonoBehaviour
             return;
         }
 
-        if (string.IsNullOrEmpty(goodsItemId))
+        if (goodsItemIds == null || goodsItemIds.Length == 0)
         {
-            Debug.LogWarning("[ShopGoodsUnlockButton] goodsItemId가 비어 있습니다.");
+            Debug.LogWarning("[ShopGoodsUnlockButton] 해금할 goodsItemIds가 없습니다.");
             return;
         }
 
-        bool success = shop.BuyGoodsUnlock(goodsItemId, price);
+        bool success = shop.BuyGoodsUnlock(goodsItemIds, price);
 
         if (success)
-            Debug.Log($"[ShopGoodsUnlockButton] 굿즈 해금 구매 성공: {goodsItemId}");
+            Debug.Log("[ShopGoodsUnlockButton] 굿즈 묶음 해금 구매 성공");
         else
-            Debug.Log($"[ShopGoodsUnlockButton] 굿즈 해금 구매 실패: {goodsItemId}");
+            Debug.Log("[ShopGoodsUnlockButton] 굿즈 묶음 해금 구매 실패");
     }
 }

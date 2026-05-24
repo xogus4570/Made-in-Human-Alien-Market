@@ -1,132 +1,66 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShopTabController : MonoBehaviour
 {
-    [Header("탭 버튼")]
-    [SerializeField] private Button materialTabButton;
-    [SerializeField] private Button upgradeTabButton;
-    [SerializeField] private Button goodsTabButton;
+    [Header("탭 Content")]
+    [SerializeField] private GameObject materialContent;
+    [SerializeField] private GameObject gemContent;
+    [SerializeField] private GameObject upgradeContent;
+    [SerializeField] private GameObject goodsContent;
 
-    [Header("탭 외형")]
+    [Header("탭 버튼 외형")]
     [SerializeField] private ShopTabButtonUI materialTabVisual;
+    [SerializeField] private ShopTabButtonUI gemTabVisual;
     [SerializeField] private ShopTabButtonUI upgradeTabVisual;
     [SerializeField] private ShopTabButtonUI goodsTabVisual;
 
-    [Header("스크롤")]
-    [SerializeField] private ScrollRect scrollRect;
-
-    [Header("콘텐츠")]
-    [SerializeField] private RectTransform materialContent;
-    [SerializeField] private RectTransform upgradeContent;
-    [SerializeField] private RectTransform goodsContent;
-
-    private ShopTabType currentTab;
-
-    private Vector2 materialStartPos;
-    private Vector2 upgradeStartPos;
-    private Vector2 goodsStartPos;
+    [Header("처음 열릴 탭")]
+    [SerializeField] private ShopTabType currentTab = ShopTabType.Material;
 
     private void Awake()
     {
-        if (materialContent != null) materialStartPos = materialContent.anchoredPosition;
-        if (upgradeContent != null) upgradeStartPos = upgradeContent.anchoredPosition;
-        if (goodsContent != null) goodsStartPos = goodsContent.anchoredPosition;
-    }
-
-    private void Start()
-    {
-        if (materialTabButton != null)
-            materialTabButton.onClick.AddListener(OpenMaterialTab);
-
-        if (upgradeTabButton != null)
-            upgradeTabButton.onClick.AddListener(OpenUpgradeTab);
-
-        if (goodsTabButton != null)
-            goodsTabButton.onClick.AddListener(OpenGoodsTab);
-
-        OpenMaterialTab();
+        RefreshTab();
     }
 
     public void OpenMaterialTab()
     {
         currentTab = ShopTabType.Material;
-        RefreshContent(true);
-        RefreshTabButtonVisual();
+        RefreshTab();
+    }
+
+    public void OpenGemTab()
+    {
+        currentTab = ShopTabType.Gem;
+        RefreshTab();
     }
 
     public void OpenUpgradeTab()
     {
         currentTab = ShopTabType.Upgrade;
-        RefreshContent(true);
-        RefreshTabButtonVisual();
+        RefreshTab();
     }
 
     public void OpenGoodsTab()
     {
         currentTab = ShopTabType.Goods;
-        RefreshContent(true);
-        RefreshTabButtonVisual();
+        RefreshTab();
     }
 
-    public void ResetCurrentTabPosition()
-    {
-        RectTransform targetContent = GetCurrentContent();
-        if (targetContent == null) return;
-
-        targetContent.anchoredPosition = GetStartPosition(targetContent);
-
-        if (scrollRect != null)
-            scrollRect.content = targetContent;
-    }
-
-    private void RefreshContent(bool resetPosition)
+    public void RefreshTab()
     {
         if (materialContent != null)
-            materialContent.gameObject.SetActive(currentTab == ShopTabType.Material);
+            materialContent.SetActive(currentTab == ShopTabType.Material);
+
+        if (gemContent != null)
+            gemContent.SetActive(currentTab == ShopTabType.Gem);
 
         if (upgradeContent != null)
-            upgradeContent.gameObject.SetActive(currentTab == ShopTabType.Upgrade);
+            upgradeContent.SetActive(currentTab == ShopTabType.Upgrade);
 
         if (goodsContent != null)
-            goodsContent.gameObject.SetActive(currentTab == ShopTabType.Goods);
+            goodsContent.SetActive(currentTab == ShopTabType.Goods);
 
-        RectTransform targetContent = GetCurrentContent();
-
-        if (scrollRect != null && targetContent != null)
-        {
-            scrollRect.content = targetContent;
-
-            if (resetPosition)
-                targetContent.anchoredPosition = GetStartPosition(targetContent);
-
-            LayoutRebuilder.ForceRebuildLayoutImmediate(targetContent);
-            Canvas.ForceUpdateCanvases();
-        }
-    }
-
-    private RectTransform GetCurrentContent()
-    {
-        switch (currentTab)
-        {
-            case ShopTabType.Material:
-                return materialContent;
-            case ShopTabType.Upgrade:
-                return upgradeContent;
-            case ShopTabType.Goods:
-                return goodsContent;
-        }
-
-        return null;
-    }
-
-    private Vector2 GetStartPosition(RectTransform target)
-    {
-        if (target == materialContent) return materialStartPos;
-        if (target == upgradeContent) return upgradeStartPos;
-        if (target == goodsContent) return goodsStartPos;
-
-        return Vector2.zero;
+        RefreshTabButtonVisual();
     }
 
     private void RefreshTabButtonVisual()
@@ -134,10 +68,36 @@ public class ShopTabController : MonoBehaviour
         if (materialTabVisual != null)
             materialTabVisual.SetSelected(currentTab == ShopTabType.Material);
 
+        if (gemTabVisual != null)
+            gemTabVisual.SetSelected(currentTab == ShopTabType.Gem);
+
         if (upgradeTabVisual != null)
             upgradeTabVisual.SetSelected(currentTab == ShopTabType.Upgrade);
 
         if (goodsTabVisual != null)
             goodsTabVisual.SetSelected(currentTab == ShopTabType.Goods);
+    }
+
+    public void ResetCurrentTabPosition()
+    {
+        ResetContentPosition(materialContent);
+        ResetContentPosition(gemContent);
+        ResetContentPosition(upgradeContent);
+        ResetContentPosition(goodsContent);
+    }
+
+    private void ResetContentPosition(GameObject contentObject)
+    {
+        if (contentObject == null)
+            return;
+
+        RectTransform rect = contentObject.GetComponent<RectTransform>();
+
+        if (rect == null)
+            return;
+
+        Vector2 pos = rect.anchoredPosition;
+        pos.y = 443.9999f;
+        rect.anchoredPosition = pos;
     }
 }

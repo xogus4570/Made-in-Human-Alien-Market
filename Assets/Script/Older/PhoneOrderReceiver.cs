@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PhoneOrderReceiver : MonoBehaviour, IInteractable
@@ -76,36 +77,47 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
             return;
         }
 
+        if (GoodsUnlockManager.Instance == null)
+        {
+            Debug.LogError("[PhoneOrderReceiver] GoodsUnlockManager.Instance 가 없습니다.");
+            return;
+        }
+
         if (recipeDB.recipes == null || recipeDB.recipes.Count == 0)
         {
             Debug.LogError("[PhoneOrderReceiver] RecipeDB에 등록된 레시피가 없습니다.");
             return;
         }
 
-        // 유효한 resultId를 가진 레시피를 찾기 위해 몇 번 시도
-        Recipe selectedRecipe = null;
-        const int maxTry = 20;
+        List<Recipe> unlockedRecipes = new List<Recipe>();
 
-        for (int i = 0; i < maxTry; i++)
+        for (int i = 0; i < recipeDB.recipes.Count; i++)
         {
-            int randomIndex = Random.Range(0, recipeDB.recipes.Count);
-            Recipe candidate = recipeDB.recipes[randomIndex];
+            Recipe candidate = recipeDB.recipes[i];
 
             if (candidate == null) continue;
             if (string.IsNullOrEmpty(candidate.resultId)) continue;
 
+            if (!GoodsUnlockManager.Instance.IsUnlocked(candidate.resultId))
+                continue;
+
             Item resultItem = ItemDataBase.instance.GetById(candidate.resultId);
             if (resultItem == null) continue;
 
-            selectedRecipe = candidate;
-            break;
+            if (resultItem.itemType != ItemType.Goods)
+                continue;
+
+            unlockedRecipes.Add(candidate);
         }
 
-        if (selectedRecipe == null)
+        if (unlockedRecipes.Count == 0)
         {
-            Debug.LogError("[PhoneOrderReceiver] 유효한 resultId를 가진 레시피를 찾지 못했습니다.");
+            Debug.LogWarning("[PhoneOrderReceiver] 주문 생성 실패: 해금된 유효 굿즈 레시피가 없습니다.");
             return;
         }
+
+        int randomIndex = Random.Range(0, unlockedRecipes.Count);
+        Recipe selectedRecipe = unlockedRecipes[randomIndex];
 
         Item item = ItemDataBase.instance.GetById(selectedRecipe.resultId);
         if (item == null)
@@ -122,13 +134,11 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
         );
         remainingTime = incomingOrderDuration;
 
-        // [추가] 레시피 보상값 임시 저장
         pendingRewardGold = selectedRecipe.rewardGold;
         pendingRewardExp = selectedRecipe.rewardExp;
         pendingRewardInfluence = selectedRecipe.rewardInfluence;
         pendingRewardSatisfaction = selectedRecipe.rewardSatisfaction;
 
-        // [추가] 보상값 미설정 경고 로그
         if (selectedRecipe.rewardGold == 0 &&
             selectedRecipe.rewardExp == 0 &&
             selectedRecipe.rewardInfluence == 0 &&
@@ -138,7 +148,7 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
         }
 
         Debug.Log($"[PhoneOrderReceiver] 랜덤 주문 도착: {pendingItem.itemName} x{pendingQuantity}");
-        Debug.Log($"[PhoneOrderReceiver] 선택된 레시피 resultId: {selectedRecipe.resultId}");
+        Debug.Log($"[PhoneOrderReceiver] 선택된 해금 굿즈 resultId: {selectedRecipe.resultId}");
         Debug.Log($"[PhoneOrderReceiver] {incomingOrderDuration}초 안에 전화를 받아야 합니다.");
     }
 
@@ -150,7 +160,14 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
             return;
         }
 
-        OrderManager.Instance.AddOrder(pendingItem, pendingQuantity, pendingRewardGold, pendingRewardExp, pendingRewardInfluence, pendingRewardSatisfaction);
+        OrderManager.Instance.AddOrder(
+            pendingItem,
+            pendingQuantity,
+            pendingRewardGold,
+            pendingRewardExp,
+            pendingRewardInfluence,
+            pendingRewardSatisfaction
+        );
 
         Debug.Log($"[PhoneOrderReceiver] 주문 수락 완료: {pendingItem.itemName} x{pendingQuantity}");
 
@@ -180,5 +197,10 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
         pendingItem = null;
         pendingQuantity = 0;
         remainingTime = 0f;
+
+        pendingRewardGold = 0;
+        pendingRewardExp = 0;
+        pendingRewardInfluence = 0;
+        pendingRewardSatisfaction = 0;
     }
 }
