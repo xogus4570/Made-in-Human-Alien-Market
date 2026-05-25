@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b017cf1bf78ce514e84e34a18513b846
+guid: cc99c3d8bae56474f8930183f0cad202
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4247158722559733383
-    second: BG_printer_0
+      213: -8532471074088235824
+    second: UI_txt_storage_title_0
+  - first:
+      213: -1870911376719135083
+    second: UI_txt_storage_title_1
+  - first:
+      213: -8434885248939085313
+    second: UI_txt_storage_title_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_printer_0
+      name: UI_txt_storage_title_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 67
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 971102de4af0f05c0800000000000000
-      internalID: -4247158722559733383
+      spriteID: 0dcccacd3c2969980800000000000000
+      internalID: -8532471074088235824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_txt_storage_title_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 3
+        width: 63
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59e3b60f3003906e0800000000000000
+      internalID: -1870911376719135083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_txt_storage_title_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 19
+        width: 56
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff1bdc75e8441fa80800000000000000
+      internalID: -8434885248939085313
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_printer_0: -4247158722559733383
+      UI_txt_storage_title_0: -8532471074088235824
+      UI_txt_storage_title_1: -1870911376719135083
+      UI_txt_storage_title_2: -8434885248939085313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

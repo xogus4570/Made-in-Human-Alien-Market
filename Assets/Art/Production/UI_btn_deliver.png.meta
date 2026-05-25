@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b017cf1bf78ce514e84e34a18513b846
+guid: 365b2eab617cf1e4a8188b96eabb39ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4247158722559733383
-    second: BG_printer_0
+      213: -3044713822147957365
+    second: UI_btn_deliver_0
+  - first:
+      213: -8809852844355456581
+    second: UI_btn_deliver_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_printer_0
+      name: UI_btn_deliver_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 26
+        y: 15
+        width: 301
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 971102de4af0f05c0800000000000000
-      internalID: -4247158722559733383
+      spriteID: b8d262c09e00fb5d0800000000000000
+      internalID: -3044713822147957365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_btn_deliver_1
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 17
+        width: 302
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb17ab0c38d1db580800000000000000
+      internalID: -8809852844355456581
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_printer_0: -4247158722559733383
+      UI_btn_deliver_0: -3044713822147957365
+      UI_btn_deliver_1: -8809852844355456581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b017cf1bf78ce514e84e34a18513b846
+guid: 0441760a95f990d4690e38af06c03f15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4247158722559733383
-    second: BG_printer_0
+      213: -3060607880978169652
+    second: UI_gauge_bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_printer_0
+      name: UI_gauge_bar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 410
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 971102de4af0f05c0800000000000000
-      internalID: -4247158722559733383
+      spriteID: cc0098919598685d0800000000000000
+      internalID: -3060607880978169652
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_printer_0: -4247158722559733383
+      UI_gauge_bar_0: -3060607880978169652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

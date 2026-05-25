@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b017cf1bf78ce514e84e34a18513b846
+guid: e59e87f43e04ac7469240e92ffa929c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4247158722559733383
-    second: BG_printer_0
+      213: -5940567331089054483
+    second: UI_panel_miniGame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_printer_0
+      name: UI_panel_miniGame_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        y: 1
+        width: 435
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 971102de4af0f05c0800000000000000
-      internalID: -4247158722559733383
+      spriteID: de48522ac7dde8da0800000000000000
+      internalID: -5940567331089054483
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_printer_0: -4247158722559733383
+      UI_panel_miniGame_0: -5940567331089054483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
