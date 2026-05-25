@@ -12,6 +12,9 @@ public class PackingController : MonoBehaviour
     public Button craftButton;
     public Button clearButton;
 
+    [Header("제작 가능 품목 제한")]
+    [SerializeField] private ProductionRecipeLimit recipeLimit;
+
     [Header("포장 미니게임")]
     [SerializeField] private PackingMinigameController minigameController;
 
@@ -60,6 +63,9 @@ public class PackingController : MonoBehaviour
         Recipe recipe = recipeDB.Find(slotA.item.id, slotB.item.id, slotC.item.id);
         if (recipe == null) return false;
 
+        if (recipeLimit != null && !recipeLimit.CanCraft(recipe.resultId))
+            return false;
+
         Item resultItem = ItemDataBase.instance.GetById(recipe.resultId);
         if (resultItem == null) return false;
 
@@ -77,7 +83,6 @@ public class PackingController : MonoBehaviour
         if (!HasValidRecipe()) return;
 
         Recipe recipe = recipeDB.Find(slotA.item.id, slotB.item.id, slotC.item.id);
-
         if (recipe == null) return;
         if (!CanConsume(slotA) || !CanConsume(slotB) || !CanConsume(slotC)) return;
 

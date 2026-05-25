@@ -22,6 +22,9 @@ public class CraftingMinigameController : MonoBehaviour
     [SerializeField] private int maxGauge = 6;
     [SerializeField] private int arrowsPerGauge = 4;
 
+    [Header("실패 패널티")]
+    [SerializeField] private int failSatisfactionPenalty = 3;
+
     [Header("완료 후 돌아갈 메인 씬")]
     [SerializeField] private string mainSceneName = "GwonTaeHyeon_Test";
 
@@ -53,7 +56,8 @@ public class CraftingMinigameController : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying) return;
+        if (!isPlaying)
+            return;
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
             CheckInput(ArrowDirection.Up);
@@ -83,7 +87,11 @@ public class CraftingMinigameController : MonoBehaviour
         isPlaying = true;
 
         if (progressSlider != null)
+        {
+            progressSlider.minValue = 0;
+            progressSlider.maxValue = maxGauge;
             progressSlider.value = 0;
+        }
 
         if (arrowMinigamePanel != null)
             arrowMinigamePanel.SetActive(true);
@@ -176,20 +184,17 @@ public class CraftingMinigameController : MonoBehaviour
         }
         else
         {
-            Debug.Log("[CraftingMinigame] 입력 실패. 같은 패턴 처음부터 다시 입력하세요.");
-            ResetSamePattern();
+            FailPattern();
         }
     }
 
-    private void ResetSamePattern()
+    private void FailPattern()
     {
-        currentInputIndex = 0;
+        Debug.Log("[CraftingMinigame] 입력 실패. 진행도 증가 + 만족도 패널티 저장");
 
-        for (int i = 0; i < arrowImages.Length; i++)
-        {
-            if (arrowImages[i] != null)
-                arrowImages[i].color = Color.white;
-        }
+        MinigamePenaltyData.AddPenalty(failSatisfactionPenalty);
+
+        SuccessOneGauge();
     }
 
     private void SuccessOneGauge()
@@ -199,7 +204,7 @@ public class CraftingMinigameController : MonoBehaviour
         if (progressSlider != null)
             progressSlider.value = currentGauge;
 
-        Debug.Log($"[CraftingMinigame] 패턴 성공: {currentGauge}/{maxGauge}");
+        Debug.Log($"[CraftingMinigame] 진행도 증가: {currentGauge}/{maxGauge}");
 
         if (currentGauge >= maxGauge)
             CompleteCrafting();
@@ -211,7 +216,29 @@ public class CraftingMinigameController : MonoBehaviour
     {
         isPlaying = false;
 
-        if (currentRecipe == null) return;
+        if (currentRecipe == null)
+        {
+            Debug.LogWarning("[CraftingMinigame] currentRecipe가 없습니다.");
+            return;
+        }
+
+        if (slotA == null || slotB == null || slotC == null)
+        {
+            Debug.LogWarning("[CraftingMinigame] 재료 슬롯이 없습니다.");
+            return;
+        }
+
+        if (Inventory.instance == null)
+        {
+            Debug.LogWarning("[CraftingMinigame] Inventory.instance가 없습니다.");
+            return;
+        }
+
+        if (ItemDataBase.instance == null)
+        {
+            Debug.LogWarning("[CraftingMinigame] ItemDataBase.instance가 없습니다.");
+            return;
+        }
 
         Inventory.instance.Remove(slotA.item, slotA.count);
         Inventory.instance.Remove(slotB.item, slotB.count);
@@ -223,6 +250,10 @@ public class CraftingMinigameController : MonoBehaviour
         {
             Inventory.instance.Add(resultItem, Mathf.Max(1, currentRecipe.resultCount));
             Debug.Log($"[CraftingMinigame] 제작 완료: {resultItem.itemName}");
+        }
+        else
+        {
+            Debug.LogWarning($"[CraftingMinigame] 결과 아이템을 찾지 못했습니다: {currentRecipe.resultId}");
         }
 
         if (arrowMinigamePanel != null)

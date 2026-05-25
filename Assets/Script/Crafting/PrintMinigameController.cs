@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PrintMinigameController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PrintMinigameController : MonoBehaviour
     [SerializeField] private int requiredSuccessCount = 6;
     [SerializeField] private float barSpeed = 600f;
     [SerializeField] private float successZoneWidth = 120f;
+
+    [Header("실패 패널티")]
+    [SerializeField] private int failSatisfactionPenalty = 3;
 
     [Header("완료 후 돌아갈 메인 씬")]
     [SerializeField] private string mainSceneName = "GwonTaeHyeon_Test";
@@ -67,6 +71,9 @@ public class PrintMinigameController : MonoBehaviour
 
         currentSuccessCount = 0;
         isPlaying = true;
+
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
 
         if (progressSlider != null)
         {
@@ -152,7 +159,20 @@ public class PrintMinigameController : MonoBehaviour
 
     private void Fail()
     {
-        Debug.Log("[PrintMinigame] 실패");
+        Debug.Log("[PrintMinigame] 실패. 진행도 증가 + 만족도 패널티 저장");
+
+        MinigamePenaltyData.AddPenalty(failSatisfactionPenalty);
+
+        currentSuccessCount++;
+
+        if (progressSlider != null)
+            progressSlider.value = currentSuccessCount;
+
+        if (currentSuccessCount >= requiredSuccessCount)
+        {
+            CompletePrinting();
+            return;
+        }
 
         ResetMovingBar();
         RandomizeSuccessZone();
@@ -193,6 +213,12 @@ public class PrintMinigameController : MonoBehaviour
         if (currentRecipe == null)
         {
             Debug.LogWarning("[PrintMinigame] currentRecipe가 없습니다.");
+            return;
+        }
+
+        if (slotA == null || slotB == null || slotC == null)
+        {
+            Debug.LogWarning("[PrintMinigame] 재료 슬롯이 없습니다.");
             return;
         }
 

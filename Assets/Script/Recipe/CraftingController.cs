@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CraftingController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CraftingController : MonoBehaviour
     public RecipeDB recipeDB;
     public Button craftButton;
     public Button clearButton;
+
+    [Header("제작 가능 품목 제한")]
+    [SerializeField] private ProductionRecipeLimit recipeLimit;
 
     [Header("미니게임")]
     [SerializeField] private CraftingMinigameController minigameController;
@@ -54,9 +58,13 @@ public class CraftingController : MonoBehaviour
     {
         if (slotA.IsEmpty || slotB.IsEmpty || slotC.IsEmpty) return false;
         if (recipeDB == null) return false;
+        if (ItemDataBase.instance == null) return false;
 
         Recipe recipe = recipeDB.Find(slotA.item.id, slotB.item.id, slotC.item.id);
         if (recipe == null) return false;
+
+        if (recipeLimit != null && !recipeLimit.CanCraft(recipe.resultId))
+            return false;
 
         Item resultItem = ItemDataBase.instance.GetById(recipe.resultId);
         if (resultItem == null) return false;
@@ -75,7 +83,6 @@ public class CraftingController : MonoBehaviour
         if (!HasValidRecipe()) return;
 
         Recipe recipe = recipeDB.Find(slotA.item.id, slotB.item.id, slotC.item.id);
-
         if (recipe == null) return;
         if (!CanConsume(slotA) || !CanConsume(slotB) || !CanConsume(slotC)) return;
 
@@ -84,6 +91,9 @@ public class CraftingController : MonoBehaviour
             Debug.LogWarning("[CraftingController] 미니게임 컨트롤러가 연결되지 않았습니다.");
             return;
         }
+
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
 
         minigameController.StartMinigame(slotA, slotB, slotC, recipe);
     }

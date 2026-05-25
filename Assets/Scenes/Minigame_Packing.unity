@@ -203,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 48349732703465812, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 113774562445327215, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -291,6 +295,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 717989458175072198, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 908812404665246314, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -479,6 +487,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2500070389083074160, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 2574907138250824586, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -531,6 +543,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3361316229653658484, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
+    - target: {fileID: 3456577660075197320, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 3654136484275830405, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -555,6 +575,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3669130981790480612, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
+    - target: {fileID: 3769252129311391257, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 3889380158078097996, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -627,6 +655,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4769840109107587817, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 5036005863031675512, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -651,6 +683,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5098348224117838010, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 5117334542748791553, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -731,6 +767,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5374104547110436105, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 5381548014404304317, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -803,6 +843,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5991817699400567981, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 6107592265099131840, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -855,6 +899,18 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 6502847332907395843, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
+    - target: {fileID: 6545514113222917158, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
+    - target: {fileID: 6799579597051213709, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 6850031872205348755, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -935,6 +991,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271583733871026347, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 7303890439031329444, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: m_Name
       value: Canvas_Inventory
@@ -1099,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967555971793721192, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
+      propertyPath: packingController
+      value: 
+      objectReference: {fileID: 1858699326}
     - target: {fileID: 9010012524470714551, guid: ed9390a56c502db46a1384f4c29e1a01, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -3745,25 +3809,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1583344910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7303890439798161324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05290f72452e8534a9423989b8e03758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotA: {fileID: 7396684213039582595}
-  slotB: {fileID: 8084238216971346531}
-  slotC: {fileID: 8735660455346845722}
-  recipeDB: {fileID: 1950889204}
-  craftButton: {fileID: 594439063}
-  clearButton: {fileID: 1645039346}
-  minigameController: {fileID: 0}
 --- !u!1 &1645039344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +3953,7 @@ GameObject:
   - component: {fileID: 1858699324}
   - component: {fileID: 1858699326}
   - component: {fileID: 1858699325}
+  - component: {fileID: 1858699327}
   m_Layer: 0
   m_Name: PackingMinigameManager
   m_TagString: Untagged
@@ -3964,7 +4010,21 @@ MonoBehaviour:
   recipeDB: {fileID: 1950889204}
   craftButton: {fileID: 594439063}
   clearButton: {fileID: 1645039346}
+  recipeLimit: {fileID: 1858699327}
   minigameController: {fileID: 1858699325}
+--- !u!114 &1858699327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858699321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f8a3d0f41817f46b155c2d0a2b6bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipeLimit
+  craftableResultIds: []
 --- !u!1 &1950889203
 GameObject:
   m_ObjectHideFlags: 0
@@ -5755,7 +5815,7 @@ GameObject:
   - component: {fileID: 7003395820051111004}
   - component: {fileID: 3585109530444523157}
   - component: {fileID: 4395500581596496111}
-  - component: {fileID: 1583344910}
+  - component: {fileID: 7303890439798161325}
   m_Layer: 5
   m_Name: Canvas_Craft
   m_TagString: Untagged
@@ -5763,6 +5823,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7303890439798161325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303890439798161324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f46e6e32f8a1f843a7ec7bff1a865cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PackingController
+  slotA: {fileID: 7396684213039582595}
+  slotB: {fileID: 8084238216971346531}
+  slotC: {fileID: 8735660455346845722}
+  recipeDB: {fileID: 1950889204}
+  craftButton: {fileID: 594439063}
+  clearButton: {fileID: 1645039346}
+  recipeLimit: {fileID: 1858699327}
+  minigameController: {fileID: 1858699325}
 --- !u!1 &7396684213039582594
 GameObject:
   m_ObjectHideFlags: 0
