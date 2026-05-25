@@ -2173,7 +2173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f8a3d0f41817f46b155c2d0a2b6bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipeLimit
-  craftableResultIds: []
+  craftableResultIds:
+  - GD_alienLanguageSticker_A
+  - GD_alienLanguageSticker_C
+  - GD_alienLanguageSticker_B
+  - GD_alienLanguageSticker_R
 --- !u!1 &1950889203
 GameObject:
   m_ObjectHideFlags: 0
