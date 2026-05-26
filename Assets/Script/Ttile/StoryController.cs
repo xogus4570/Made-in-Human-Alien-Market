@@ -5,32 +5,32 @@ using TMPro;
 
 public class StoryController : MonoBehaviour
 {
-    [Header("ÆÐ³Î")]
+    [Header("ï¿½Ð³ï¿½")]
     [SerializeField] private GameObject titleMenuPanel;
     [SerializeField] private GameObject storyPanel;
 
-    [Header("¹öÆ°")]
+    [Header("ï¿½ï¿½Æ°")]
     [SerializeField] private GameObject nextButton;
 
-    [Header("½ºÅä¸® ÀÌ¹ÌÁöµé")]
+    [Header("ï¿½ï¿½ï¿½ä¸® ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private GameObject[] storyImages;
 
-    [Header("ÀÏ¹Ý ´ë»ç UI")]
+    [Header("ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ UI")]
     [SerializeField] private TextMeshProUGUI storyText;
 
-    [Header("ÀÎÆ®·Î °ËÀº È­¸é UI")]
+    [Header("ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ UI")]
     [SerializeField] private Image blackOverlay;
     [SerializeField] private TextMeshProUGUI introText;
 
-    [Header("½ºÅä¸® ÅØ½ºÆ®")]
+    [Header("ï¿½ï¿½ï¿½ä¸® ï¿½Ø½ï¿½Æ®")]
     [TextArea(2, 5)]
     [SerializeField] private string[] storyTexts;
 
-    [Header("ÀÎÆ®·Î ÅØ½ºÆ®")]
+    [Header("ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ø½ï¿½Æ®")]
     [TextArea(2, 5)]
     [SerializeField] private string introStoryText;
 
-    [Header("¿¬Ãâ ¼Óµµ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½")]
     [SerializeField] private float typingSpeed = 0.04f;
     [SerializeField] private float fadeSpeed = 0.7f;
 
@@ -83,7 +83,7 @@ public class StoryController : MonoBehaviour
 
         if (currentIndex >= storyImages.Length)
         {
-            Debug.Log("[Story] ½ºÅä¸® Á¾·á. ³ªÁß¿¡ ¸ÞÀÎ °ÔÀÓ ¾À ÀÌµ¿ ¿¹Á¤");
+            Debug.Log("[Story] ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 

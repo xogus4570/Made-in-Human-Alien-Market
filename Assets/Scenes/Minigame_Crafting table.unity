@@ -1339,8 +1339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 191.75, y: 39.5251}
-  m_SizeDelta: {x: 410, y: 71}
+  m_AnchoredPosition: {x: -6.625, y: 2.0126}
+  m_SizeDelta: {x: 13.25, y: -4.0251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150545885
 MonoBehaviour:
@@ -2722,10 +2722,10 @@ MonoBehaviour:
   - {fileID: 994757644}
   - {fileID: 214660924}
   - {fileID: 1005997877}
-  upSprite: {fileID: 8026320115787433656, guid: 6e1d60e2d75f48647ab7694da11b6935, type: 3}
-  downSprite: {fileID: 6080228958062701814, guid: 3fa748e2ff228bd46acde08057368df2, type: 3}
-  leftSprite: {fileID: 1020429442568432645, guid: f44f3b1cd8b2c2749b7ff6e99d1ec3b8, type: 3}
-  rightSprite: {fileID: 3375315497027394544, guid: 0de15b785b294274b96880a62025bf25, type: 3}
+  upSprite: {fileID: -6343800733466220771, guid: 9c2648fc3c3b71b47b5bf7053a101aad, type: 3}
+  downSprite: {fileID: 7960253261551617216, guid: 9c2648fc3c3b71b47b5bf7053a101aad, type: 3}
+  leftSprite: {fileID: -3099968155009224910, guid: 9c2648fc3c3b71b47b5bf7053a101aad, type: 3}
+  rightSprite: {fileID: -55994632176112024, guid: 9c2648fc3c3b71b47b5bf7053a101aad, type: 3}
   progressSlider: {fileID: 1297958070}
   maxGauge: 6
   arrowsPerGauge: 4
