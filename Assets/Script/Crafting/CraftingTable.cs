@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,38 +15,20 @@ public class CraftingTable : ProductionStation
 
     public int UpgradeLevel => upgradeLevel;
 
-    public bool HasUpgrade(string upgradeId)
-    {
-        if (string.IsNullOrEmpty(upgradeId))
-            return false;
-
-        return purchasedUpgrades.Contains(upgradeId);
-    }
-
     public bool ApplyUpgrade(string upgradeId)
     {
         if (string.IsNullOrEmpty(upgradeId))
-        {
-            Debug.LogWarning("[CraftingTable] upgradeId가 비어 있습니다.");
             return false;
-        }
 
         if (purchasedUpgrades.Contains(upgradeId))
-        {
-            Debug.Log($"[CraftingTable] 이미 구매한 강화입니다: {upgradeId}");
             return false;
-        }
 
         purchasedUpgrades.Add(upgradeId);
         upgradeLevel++;
 
-        Debug.Log($"[CraftingTable] 강화 적용 완료: {upgradeId}, 현재 강화 레벨: {upgradeLevel}");
+        ProductionUpgradeData.CraftingStartBonus = upgradeLevel;
 
-        // TODO:
-        // 나중에 upgradeId 별 실제 강화 효과를 여기서 분기해서 적용하면 됨
-        // 예)
-        // if (upgradeId == "craft_speed_1") { ... }
-        // else if (upgradeId == "craft_quality_1") { ... }
+        Debug.Log($"[CraftingTable] 강화 완료. 시작 진행도 보너스: {ProductionUpgradeData.CraftingStartBonus}");
 
         return true;
     }

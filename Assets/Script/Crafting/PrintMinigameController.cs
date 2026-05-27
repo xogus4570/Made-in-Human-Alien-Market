@@ -69,7 +69,11 @@ public class PrintMinigameController : MonoBehaviour
         slotC = c;
         currentRecipe = recipe;
 
-        currentSuccessCount = 0;
+        currentSuccessCount = Mathf.Clamp(
+            ProductionUpgradeData.PrintStartBonus,
+            0,
+            requiredSuccessCount - 1
+        );
         isPlaying = true;
 
         if (EventSystem.current != null)
@@ -79,7 +83,7 @@ public class PrintMinigameController : MonoBehaviour
         {
             progressSlider.minValue = 0;
             progressSlider.maxValue = requiredSuccessCount;
-            progressSlider.value = 0;
+            progressSlider.value = currentSuccessCount;
         }
 
         if (printMinigamePanel != null)

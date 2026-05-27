@@ -3,7 +3,7 @@ using UnityEngine;
 public class PhoneOrderAutoSpawner : MonoBehaviour
 {
     [Header("전화기 (주문 생성 대상)")]
-    [SerializeField] private PhoneOrderReceiver receiver;
+    [SerializeField] private CustomerPhoneOrderReceiver receiver;
 
     [Header("주문 생성 시간 (초)")]
     [SerializeField] private float minSpawnTime = 5f;

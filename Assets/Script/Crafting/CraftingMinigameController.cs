@@ -82,7 +82,11 @@ public class CraftingMinigameController : MonoBehaviour
         slotC = c;
         currentRecipe = recipe;
 
-        currentGauge = 0;
+        currentGauge = Mathf.Clamp(
+            ProductionUpgradeData.CraftingStartBonus,
+            0,
+            maxGauge - 1
+        );
         currentInputIndex = 0;
         isPlaying = true;
 
@@ -90,7 +94,7 @@ public class CraftingMinigameController : MonoBehaviour
         {
             progressSlider.minValue = 0;
             progressSlider.maxValue = maxGauge;
-            progressSlider.value = 0;
+            progressSlider.value = currentGauge;
         }
 
         if (arrowMinigamePanel != null)

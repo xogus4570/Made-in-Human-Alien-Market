@@ -55,14 +55,20 @@ public class PackingMinigameController : MonoBehaviour
         slotC = c;
         currentRecipe = recipe;
 
-        currentPressCount = 0;
+        currentPressCount = Mathf.Clamp(
+            ProductionUpgradeData.PackingStartBonus,
+            0,
+            requiredPressCount - 1
+        );
+
+        float progress = (float)currentPressCount / requiredPressCount;
         isPlaying = true;
 
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(null);
 
         SetupGaugeImage();
-        SetGauge(0f);
+        SetGauge(progress);
 
         if (packingMinigamePanel != null)
             packingMinigamePanel.SetActive(true);
