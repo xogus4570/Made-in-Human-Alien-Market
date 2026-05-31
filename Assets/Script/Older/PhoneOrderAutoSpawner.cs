@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PhoneOrderAutoSpawner : MonoBehaviour
 {
-    [Header("ÀüÈ­±â (ÁÖ¹® »ý¼º ´ë»ó)")]
+    [Header("ï¿½ï¿½È­ï¿½ï¿½ (ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)")]
     [SerializeField] private CustomerPhoneOrderReceiver receiver;
 
-    [Header("ÁÖ¹® »ý¼º ½Ã°£ (ÃÊ)")]
+    [Header("ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ (ï¿½ï¿½)")]
     [SerializeField] private float minSpawnTime = 5f;
     [SerializeField] private float maxSpawnTime = 8f;
 
@@ -20,7 +20,7 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
     {
         if (receiver == null) return;
 
-        // ÀÌ¹Ì ÁÖ¹® ÀÖÀ¸¸é »ý¼º ¾ÈÇÔ
+        // ï¿½Ì¹ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (receiver.HasIncomingOrder) return;
 
         timer -= Time.deltaTime;
@@ -35,6 +35,6 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
     private void ResetSpawnTimer()
     {
         timer = Random.Range(minSpawnTime, maxSpawnTime);
-        Debug.Log($"[PhoneOrderAutoSpawner] ´ÙÀ½ ÁÖ¹®±îÁö ´ë±â ½Ã°£: {timer:F1}ÃÊ");
+        Debug.Log($"[PhoneOrderAutoSpawner] ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½: {timer:F1}ï¿½ï¿½");
     }
 }

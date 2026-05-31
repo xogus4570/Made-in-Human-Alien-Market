@@ -13,6 +13,29 @@ public class OrderCardUI : MonoBehaviour
 
     [SerializeField] private RecipeDB recipeDB;
 
+    [SerializeField] private Image orderPanelImage;
+
+    [Header("보석별 주문 카드 배경")]
+    [SerializeField] private Sprite aquaPanelSprite;
+    [SerializeField] private Sprite citronPanelSprite;
+    [SerializeField] private Sprite blackPearlPanelSprite;
+    [SerializeField] private Sprite rubyPanelSprite;
+
+    private void ApplyOrderPanelByItemId(string itemId)
+    {
+        if (orderPanelImage == null || string.IsNullOrEmpty(itemId))
+            return;
+
+        if (itemId.EndsWith("_A"))
+            orderPanelImage.sprite = aquaPanelSprite;
+        else if (itemId.EndsWith("_C"))
+            orderPanelImage.sprite = citronPanelSprite;
+        else if (itemId.EndsWith("_B"))
+            orderPanelImage.sprite = blackPearlPanelSprite;
+        else if (itemId.EndsWith("_R"))
+            orderPanelImage.sprite = rubyPanelSprite;
+    }
+
     public void SetRecipeDB(RecipeDB db)
     {
         recipeDB = db;
@@ -49,6 +72,7 @@ public class OrderCardUI : MonoBehaviour
         SetIngredient(ingredientAIcon, recipe.ingredientA);
         SetIngredient(ingredientBIcon, recipe.ingredientB);
         SetIngredient(ingredientCIcon, recipe.ingredientC);
+        ApplyOrderPanelByItemId(order.orderedItem.id);
     }
 
     private void SetIngredient(Image icon, string itemId)
@@ -80,5 +104,6 @@ public class OrderCardUI : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
     }
+
 }
 

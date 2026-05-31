@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.3, y: -25.19999}
-  m_SizeDelta: {x: 20.8721, y: 20.6222}
+  m_AnchoredPosition: {x: -22.8, y: -27.086}
+  m_SizeDelta: {x: 17.0536, y: 16.8494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6305516277212922425
 CanvasRenderer:
@@ -245,6 +245,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7641503673425118602}
   - {fileID: 6430588534929449048}
   - {fileID: 299328175544099984}
   - {fileID: 2680152172552335329}
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -313,6 +314,11 @@ MonoBehaviour:
   ingredientBIcon: {fileID: 4647951828748448796}
   ingredientCIcon: {fileID: 3724342284376756921}
   recipeDB: {fileID: 0}
+  orderPanelImage: {fileID: 198033073651674944}
+  aquaPanelSprite: {fileID: 5753933749714959048, guid: 9c1e26035fbde8a4dac1da6b1ada8cdf, type: 3}
+  citronPanelSprite: {fileID: 3858523222099343950, guid: 9c1e26035fbde8a4dac1da6b1ada8cdf, type: 3}
+  blackPearlPanelSprite: {fileID: 3476134906679762690, guid: 9c1e26035fbde8a4dac1da6b1ada8cdf, type: 3}
+  rubyPanelSprite: {fileID: -8926141210830282018, guid: 9c1e26035fbde8a4dac1da6b1ada8cdf, type: 3}
 --- !u!1 &3483136885937251122
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,8 +353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.089797735, y: -25.199879}
-  m_SizeDelta: {x: 20.8721, y: 20.622}
+  m_AnchoredPosition: {x: 0, y: -27.086}
+  m_SizeDelta: {x: 17.0538, y: 16.849}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3090959137291250856
 CanvasRenderer:
@@ -379,6 +385,81 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4128219684192533585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7641503673425118602}
+  - component: {fileID: 3348296572124387541}
+  - component: {fileID: 198033073651674944}
+  m_Layer: 5
+  m_Name: BackgroundPanel(Image)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7641503673425118602
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128219684192533585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6474434429702225336}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 51.22003}
+  m_SizeDelta: {x: 75.4072, y: 102.44}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3348296572124387541
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128219684192533585}
+  m_CullTransparentMesh: 1
+--- !u!114 &198033073651674944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128219684192533585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -8926141210830282018, guid: 9c1e26035fbde8a4dac1da6b1ada8cdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -497,8 +578,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.043701, y: -25.199879}
-  m_SizeDelta: {x: 20.8721, y: 20.622}
+  m_AnchoredPosition: {x: 21.9, y: -27.086}
+  m_SizeDelta: {x: 17.0538, y: 16.849}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2390009144450007424
 CanvasRenderer:
