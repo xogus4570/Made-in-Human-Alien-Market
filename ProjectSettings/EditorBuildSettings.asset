@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 0eca2903156faca429f42570c995cb88
+  - enabled: 1
     path: Assets/Scenes/GwonTaeHyeon_Test.unity
     guid: 234c39f54b1e0ff4f903ad164ca5f272
   - enabled: 1
@@ -20,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame_Packing.unity
     guid: 0ee2a0d42d3876f4aaff15f7c99dc0cb
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: a9f84b7319f2d414e91afd6af275b42c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

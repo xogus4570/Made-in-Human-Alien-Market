@@ -71,6 +71,9 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private float alpha23 = 0.90f;
     [SerializeField] private float alpha24 = 0.95f;
 
+    [Header("엔딩")]
+    [SerializeField] private EndingDecisionManager endingDecisionManager;
+
     private bool isTimeRunning;
 
     private int CurrentHour
@@ -327,6 +330,26 @@ public class GameFlowController : MonoBehaviour
 
         if (OrderManager.Instance != null)
             OrderManager.Instance.ClearAllOrders();
+
+        if (gameStatusUI != null && gameStatusUI.CurrentDay >= 30)
+        {
+            if (resultPanelUI != null)
+                resultPanelUI.CloseResult();
+
+            if (endingDecisionManager != null)
+            {
+                endingDecisionManager.CheckAndMoveToEnding(
+                    gameStatusUI.CurrentGold,
+                    gameStatusUI.CurrentInfluence
+                );
+            }
+            else
+            {
+                Debug.LogError("[FSM] EndingDecisionManager가 연결되지 않았습니다.");
+            }
+
+            return;
+        }
 
         if (gameStatusUI != null)
             gameStatusUI.NextDay();

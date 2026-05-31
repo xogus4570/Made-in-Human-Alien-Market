@@ -115,6 +115,9 @@ public class GameStatusUI : MonoBehaviour
     public int CurrentExp => Data != null ? Data.currentExp : 0;
     public int MaxExpValue => maxExp;
 
+    public int CurrentGold => Data != null ? Data.gold : 0;
+    public int CurrentInfluence => Data != null ? Data.influence : 0;
+
     private void UpdateUI()
     {
         if (Data == null)
