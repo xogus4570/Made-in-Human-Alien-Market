@@ -1025,7 +1025,6 @@ GameObject:
   - component: {fileID: 43941861}
   - component: {fileID: 43941863}
   - component: {fileID: 43941864}
-  - component: {fileID: 43941865}
   m_Layer: 6
   m_Name: Order_Computer
   m_TagString: Untagged
@@ -1160,29 +1159,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43941860}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b0dbed850f0134f938d23ef78c848c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhoneOrderReceiver
-  recipeDB: {fileID: 1127743059}
-  minOrderQuantity: 1
-  maxOrderQuantity: 1
-  incomingOrderDuration: 10
-  gameStatusUI: {fileID: 1939240710}
-  missedOrderSatisfactionPenalty: 5
---- !u!114 &43941865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43941860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624464e16e7b9404a8dc21a35e5d02df, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a33a7ec96411e84aa29f6b509c6cd16, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomerOrderInteractable
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerPhoneOrderReceiver
   dialogUI: {fileID: 1554799421}
   recipeDB: {fileID: 1127743059}
   customers:
@@ -1206,6 +1187,11 @@ MonoBehaviour:
     customerSprite: {fileID: 21300000, guid: 93f93dcfc4e7c0840b7af1f4b4cd5b50, type: 3}
     orderableResultIds:
     - GD_alienLanguageSticker_A
+  minOrderQuantity: 1
+  maxOrderQuantity: 1
+  incomingOrderDuration: 10
+  gameStatusUI: {fileID: 1939240710}
+  missedOrderSatisfactionPenalty: 5
 --- !u!1 &44957901
 GameObject:
   m_ObjectHideFlags: 0
@@ -32085,6 +32071,7 @@ MonoBehaviour:
   customerImage: {fileID: 1812487219}
   customerNameText: {fileID: 1976787382}
   dialogText: {fileID: 2097698510}
+  typingSpeed: 0.04
 --- !u!1 &1555135265
 GameObject:
   m_ObjectHideFlags: 0
@@ -36241,7 +36228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fad3b8474def0c4f99bea0d6e5058ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneOrderAutoSpawner
-  receiver: {fileID: 0}
+  receiver: {fileID: 43941864}
   minSpawnTime: 5
   maxSpawnTime: 8
 --- !u!4 &1717406629
@@ -41393,15 +41380,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b274cd8b34dc6444b925438760419ada, type: 2}
+  m_sharedMaterial: {fileID: -5488600863867656698, guid: b274cd8b34dc6444b925438760419ada, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -44057,15 +44044,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b274cd8b34dc6444b925438760419ada, type: 2}
+  m_sharedMaterial: {fileID: -5488600863867656698, guid: b274cd8b34dc6444b925438760419ada, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -44089,8 +44076,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
