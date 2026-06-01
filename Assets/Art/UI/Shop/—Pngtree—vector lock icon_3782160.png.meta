@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: db0a64c71ad74aa4a9e032192cc6e22c
+guid: 0ae5272881c8a7a41bea9a2fe14fb4a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6988906448053251553
-    second: "ChatGPT Image 2026\uB144 6\uC6D4 1\uC77C \uC624\uD6C4 02_38_50_0"
+      213: 2695828625599615931
+    second: "\u2014Pngtree\u2014vector lock icon_3782160_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ChatGPT Image 2026\uB144 6\uC6D4 1\uC77C \uC624\uD6C4 02_38_50_0"
+      name: "\u2014Pngtree\u2014vector lock icon_3782160_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 1024
-        height: 1480
+        x: 189
+        y: 125
+        width: 647
+        height: 771
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1259534d9a620f90800000000000000
-      internalID: -6988906448053251553
+      spriteID: bb3d1341ad1896520800000000000000
+      internalID: 2695828625599615931
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "ChatGPT Image 2026\uB144 6\uC6D4 1\uC77C \uC624\uD6C4 02_38_50_0": -6988906448053251553
+      "\u2014Pngtree\u2014vector lock icon_3782160_0": 2695828625599615931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
