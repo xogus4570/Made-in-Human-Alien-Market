@@ -250,7 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_eyeContactPoster_A
+  - GD_eyeContactPoster_B
+  - GD_eyeContactPoster_C
+  - GD_eyeContactPoster_R
   price: 500
 --- !u!114 &10717882
 MonoBehaviour:
@@ -1172,21 +1176,69 @@ MonoBehaviour:
     customerSprite: {fileID: 21300000, guid: 1e1f37ad4834ae541a7816ac7ecd02f1, type: 3}
     orderableResultIds:
     - GD_alienLanguageSticker_R
+    - GD_hologramPhoca_R
+    - GD_temperaturePoster_R
+    - GD_interactionPoster_R
+    - GD_eyeContactPoster_R
+    - GD_talkSlimeKeyring_R
+    - GD_melodyKeyring_R
+    - GD_soundKeycaps_R
+    - GD_keycapFilter_R
+    - GD_planetBuildingKitr_R
+    - GD_alienIdolDoll_R
+    - GD_movingT-shirt_R
+    - GD_radiationSticker_R
   - customerName: "\uAC80"
     dialogMessage: "\uAC80\uC740\uC0C9 \uD14C\uC2A4\uD2B8"
     customerSprite: {fileID: 21300000, guid: 81bb3ae4f5b0ae94682c4d7ef575c80c, type: 3}
     orderableResultIds:
     - GD_alienLanguageSticker_B
+    - GD_radiationSticker_B
+    - GD_hologramPhoca_B
+    - GD_temperaturePoster_B
+    - GD_interactionPoster_B
+    - GD_eyeContactPoster_B
+    - GD_talkSlimeKeyring_B
+    - GD_soundKeycaps_B
+    - GD_keycapFilter_B
+    - GD_planetBuildingKitr_B
+    - GD_alienIdolDoll_B
+    - GD_movingT-shirt_B
+    - GD_melodyKeyring_B
   - customerName: "\uB178"
     dialogMessage: "\uB178\uB780\uC0C9 \uD14C\uC2A4\uD2B8"
     customerSprite: {fileID: 21300000, guid: fd44ba5c3c80f574280981aea2870e89, type: 3}
     orderableResultIds:
     - GD_alienLanguageSticker_C
+    - GD_radiationSticker_C
+    - GD_hologramPhoca_C
+    - GD_temperaturePoster_C
+    - GD_interactionPoster_C
+    - GD_eyeContactPoster_C
+    - GD_talkSlimeKeyring_C
+    - GD_melodyKeyring_C
+    - GD_soundKeycaps_C
+    - GD_keycapFilter_C
+    - GD_planetBuildingKitr_C
+    - GD_alienIdolDoll_C
+    - GD_movingT-shirt_C
   - customerName: "\uD30C"
     dialogMessage: "\uD30C\uB780\uC0C9 \uD14C\uC2A4\uD2B8"
     customerSprite: {fileID: 21300000, guid: 93f93dcfc4e7c0840b7af1f4b4cd5b50, type: 3}
     orderableResultIds:
     - GD_alienLanguageSticker_A
+    - GD_radiationSticker_A
+    - GD_hologramPhoca_A
+    - GD_temperaturePoster_A
+    - GD_interactionPoster_A
+    - GD_eyeContactPoster_A
+    - GD_talkSlimeKeyring_A
+    - GD_melodyKeyring_A
+    - GD_soundKeycaps_A
+    - GD_keycapFilter_A
+    - GD_planetBuildingKitr_A
+    - GD_alienIdolDoll_A
+    - 'GD_movingT-shirt_A '
   minOrderQuantity: 1
   maxOrderQuantity: 1
   incomingOrderDuration: 10
@@ -2370,8 +2422,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 55f3db702bdde654b8db8da186d594c2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5881,7 +5933,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_planetBuildingKitr_A
+  - GD_planetBuildingKitr_B
+  - GD_planetBuildingKitr_C
+  - GD_planetBuildingKitr_R
   price: 500
 --- !u!114 &378150741
 MonoBehaviour:
@@ -12224,7 +12280,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_radiationSticker_A
+  - GD_radiationSticker_B
+  - GD_radiationSticker_C
+  - GD_radiationSticker_R
   price: 500
 --- !u!114 &741116318
 MonoBehaviour:
@@ -15248,7 +15308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_soundKeycaps_A
+  - GD_soundKeycaps_B
+  - GD_soundKeycaps_C
+  - GD_soundKeycaps_R
   price: 500
 --- !u!114 &872802152
 MonoBehaviour:
@@ -16286,7 +16350,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_eyeContactPoster_A
+  - GD_eyeContactPoster_B
+  - GD_eyeContactPoster_C
+  - GD_eyeContactPoster_R
   price: 500
 --- !u!114 &889290572
 MonoBehaviour:
@@ -17749,7 +17817,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_keycapFilter_A
+  - GD_keycapFilter_B
+  - GD_keycapFilter_C
+  - GD_keycapFilter_R
   price: 500
 --- !u!114 &964842923
 MonoBehaviour:
@@ -25381,7 +25453,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_temperaturePoster_A
+  - GD_temperaturePoster_B
+  - GD_temperaturePoster_C
+  - GD_temperaturePoster_R
   price: 500
 --- !u!114 &1254280989
 MonoBehaviour:
@@ -25788,7 +25864,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB098\uAC00\uAE30"
+  m_Text: 
 --- !u!222 &1273853491
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26193,7 +26269,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_movingT-shirt_A
+  - GD_movingT-shirt_B
+  - GD_movingT-shirt_C
+  - GD_movingT-shirt_R
   price: 500
 --- !u!114 &1299578718
 MonoBehaviour:
@@ -29694,7 +29774,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_alienLanguageSticker_A
+  - GD_alienLanguageSticker_C
+  - GD_alienLanguageSticker_B
+  - GD_alienLanguageSticker_R
   price: 500
 --- !u!114 &1461675219
 MonoBehaviour:
@@ -29842,7 +29926,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_hologramPhoca_A
+  - GD_hologramPhoca_B
+  - GD_hologramPhoca_C
+  - GD_hologramPhoca_R
   price: 500
 --- !u!114 &1464406015
 MonoBehaviour:
@@ -32680,7 +32768,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_alienIdolDoll_A
+  - GD_alienIdolDoll_B
+  - GD_alienIdolDoll_C
+  - GD_alienIdolDoll_R
   price: 500
 --- !u!114 &1587417898
 MonoBehaviour:
@@ -37352,8 +37444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 801.14746, y: -497.53918}
-  m_SizeDelta: {x: 249.2051, y: 67.3417}
+  m_AnchoredPosition: {x: 850.18, y: -497.53}
+  m_SizeDelta: {x: 151.1378, y: 67.3417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802382465
 MonoBehaviour:
@@ -37431,8 +37523,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3431dcfd980608843b7dcb5a7a5bffd0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -39372,7 +39464,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_talkSlimeKeyring_A
+  - GD_talkSlimeKeyring_B
+  - GD_talkSlimeKeyring_C
+  - GD_talkSlimeKeyring_R
   price: 500
 --- !u!114 &1879646739
 MonoBehaviour:
@@ -41387,8 +41483,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41820,7 +41916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bbe5505e41b8eaf4fb84ae2d04164186, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -43080,7 +43176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopGoodsUnlockButton
   shop: {fileID: 279076401}
-  goodsItemIds: []
+  goodsItemIds:
+  - GD_melodyKeyring_A
+  - GD_melodyKeyring_B
+  - GD_melodyKeyring_C
+  - GD_melodyKeyring_R
   price: 500
 --- !u!114 &2044830158
 MonoBehaviour:
@@ -44051,8 +44151,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
