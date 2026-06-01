@@ -57,7 +57,7 @@ public class OrderManager : MonoBehaviour
 
         activeOrders.Add(newOrder);
 
-        Debug.Log($"[OrderManager] ÁÖ¹® Ãß°¡: {item.itemName} x{quantity}");
+        Debug.Log($"[OrderManager] ì£¼ë¬¸ ì¶”ê°€: {item.itemName} x{quantity}");
         OnOrderListChanged?.Invoke();
     }
 
@@ -66,14 +66,14 @@ public class OrderManager : MonoBehaviour
         OrderData order = activeOrders.Find(o => o.orderId == orderId);
         if (order == null)
         {
-            Debug.LogWarning($"[OrderManager] ÁÖ¹®À» Ã£À» ¼ö ¾øÀ½: {orderId}");
+            Debug.LogWarning($"[OrderManager] ì£¼ë¬¸ì„ ì°¾ì„ ìˆ˜ ì—†ìŒ: {orderId}");
             return;
         }
 
         order.isCompleted = true;
         activeOrders.Remove(order);
 
-        Debug.Log($"[OrderManager] ÁÖ¹® ¿Ï·á: {order.orderedItem.itemName} x{order.quantity}");
+        Debug.Log($"[OrderManager] ì£¼ë¬¸ ì™„ë£Œ: {order.orderedItem.itemName} x{order.quantity}");
         OnOrderListChanged?.Invoke();
     }
 
@@ -88,7 +88,6 @@ public class OrderManager : MonoBehaviour
         OnOrderListChanged?.Invoke();
     }
 
-    // ±âÁ¸ ÀÎº¥Åä¸® Á÷Á¢ ³³Ç° ¹æ½Ä (Áö±İ ±¸Á¶¿¡¼± °ÅÀÇ ¾È ½áµµ µÊ)
     public bool TryDeliver(Item item)
     {
         if (item == null)
@@ -99,7 +98,7 @@ public class OrderManager : MonoBehaviour
 
         if (Inventory.instance == null)
         {
-            Debug.LogWarning("[Delivery] Inventory.instance°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("[Delivery] Inventory.instanceê°€ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         }
 
@@ -107,7 +106,7 @@ public class OrderManager : MonoBehaviour
 
         if (owned <= 0)
         {
-            Debug.Log("[Delivery] ÀÎº¥Åä¸®¿¡ ¾øÀ½");
+            Debug.Log("[Delivery] ì¸ë²¤í† ë¦¬ì— ì—†ìŒ");
             return false;
         }
 
@@ -123,55 +122,41 @@ public class OrderManager : MonoBehaviour
 
             if (owned < order.quantity)
             {
-                Debug.Log("[Delivery] ¼ö·® ºÎÁ·");
+                Debug.Log("[Delivery] ìˆ˜ëŸ‰ ë¶€ì¡±");
                 return false;
             }
 
             bool removed = Inventory.instance.Remove(item, order.quantity);
             if (!removed)
             {
-                Debug.Log("[Delivery] Remove ½ÇÆĞ");
+                Debug.Log("[Delivery] Remove ì‹¤íŒ¨");
                 return false;
             }
 
             activeOrders.RemoveAt(i);
 
-            if (DailyResultManager.Instance != null)
-            {
-                DailyResultManager.Instance.AddReward(
-                    order.rewardGold,
-                    order.rewardExp,
-                    order.rewardInfluence,
-                    order.rewardSatisfaction
-                );
-            }
-            else
-            {
-                Debug.LogWarning("[OrderManager] DailyResultManager.Instance°¡ ¾ø½À´Ï´Ù.");
-            }
+            GiveRewardWithPackagingBonus(order, item);
 
             OnOrderListChanged?.Invoke();
 
-            Debug.Log($"[Delivery] ³³Ç° ¼º°ø: {item.itemName}");
+            Debug.Log($"[Delivery] ë‚©í’ˆ ì„±ê³µ: {item.itemName}");
             return true;
         }
 
-        Debug.Log("[Delivery] ÇØ´ç ÁÖ¹® ¾øÀ½");
+        Debug.Log("[Delivery] í•´ë‹¹ ì£¼ë¬¸ ì—†ìŒ");
         return false;
     }
 
-    // Ã¢°í ÀüÃ¼ ±âÁØ ÀÏ°ı ³³Ç°
     public int TryDeliverAllFromStorage()
     {
         if (DeliveryStorageUI.Instance == null)
         {
-            Debug.LogWarning("[Delivery] DeliveryStorageUI.Instance°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("[Delivery] DeliveryStorageUI.Instanceê°€ ì—†ìŠµë‹ˆë‹¤.");
             return 0;
         }
 
         int deliveredCount = 0;
 
-        // µÚ¿¡¼­ºÎÅÍ Á¦°ÅÇØ¾ß ¾ÈÀüÇÔ
         for (int i = activeOrders.Count - 1; i >= 0; i--)
         {
             var order = activeOrders[i];
@@ -194,28 +179,50 @@ public class OrderManager : MonoBehaviour
 
             activeOrders.RemoveAt(i);
 
-            if (DailyResultManager.Instance != null)
-            {
-                DailyResultManager.Instance.AddReward(
-                    order.rewardGold,
-                    order.rewardExp,
-                    order.rewardInfluence,
-                    order.rewardSatisfaction
-                );
-            }
-            else
-            {
-                Debug.LogWarning("[OrderManager] DailyResultManager.Instance°¡ ¾ø½À´Ï´Ù.");
-            }
+            GiveRewardWithPackagingBonus(order, order.orderedItem);
 
             deliveredCount++;
 
-            Debug.Log($"[Delivery] ³³Ç° ¼º°ø: {order.orderedItem.itemName} x{order.quantity}");
+            Debug.Log($"[Delivery] ë‚©í’ˆ ì„±ê³µ: {order.orderedItem.itemName} x{order.quantity}");
         }
 
         if (deliveredCount > 0)
             OnOrderListChanged?.Invoke();
 
         return deliveredCount;
+    }
+
+    private void GiveRewardWithPackagingBonus(OrderData order, Item deliveredItem)
+    {
+        if (DailyResultManager.Instance == null)
+        {
+            Debug.LogWarning("[OrderManager] DailyResultManager.Instanceê°€ ì—†ìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        int gold = order.rewardGold;
+        int exp = order.rewardExp;
+        int influence = order.rewardInfluence;
+        int satisfaction = order.rewardSatisfaction;
+
+        if (PackedGoodsManager.Instance != null &&
+            PackedGoodsManager.Instance.HasPacked(deliveredItem))
+        {
+            PackedGoodsManager.Instance.UsePacked(deliveredItem);
+
+            gold += 50;
+            exp += 20;
+            influence += 10;
+            satisfaction += 5;
+
+            Debug.Log("[Delivery] í¬ì¥ ë³´ë„ˆìŠ¤ ì ìš©!");
+        }
+
+        DailyResultManager.Instance.AddReward(
+            gold,
+            exp,
+            influence,
+            satisfaction
+        );
     }
 }

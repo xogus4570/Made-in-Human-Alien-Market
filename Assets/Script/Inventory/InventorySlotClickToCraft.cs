@@ -5,40 +5,59 @@ public class InventorySlotClickToCraft : MonoBehaviour, IPointerClickHandler
 {
     public InventorySlotUI slot;
 
-    [Header("ÄÁÆ®·Ñ·¯")]
+    [Header("ì»¨íŠ¸ë¡¤ëŸ¬")]
     public CraftingController craftingController;
     public PrintController printController;
     public PackingController packingController;
+    public PackagingController packagingController;
 
-    void Awake()
+    private void Awake()
     {
         if (slot == null)
             slot = GetComponent<InventorySlotUI>();
+
+        if (craftingController == null)
+            craftingController = FindFirstObjectByType<CraftingController>(FindObjectsInactive.Include);
+
+        if (printController == null)
+            printController = FindFirstObjectByType<PrintController>(FindObjectsInactive.Include);
+
+        if (packingController == null)
+            packingController = FindFirstObjectByType<PackingController>(FindObjectsInactive.Include);
+
+        if (packagingController == null)
+            packagingController = FindFirstObjectByType<PackagingController>(FindObjectsInactive.Include);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (slot == null) return;
-        if (slot.item == null || slot.count <= 0) return;
+        if (slot == null || slot.item == null || slot.count <= 0)
+            return;
 
-        if (craftingController != null)
+        if (packagingController != null && packagingController.gameObject.activeInHierarchy)
+        {
+            packagingController.OnClickInventoryItem(slot.item);
+            return;
+        }
+
+        if (craftingController != null && craftingController.gameObject.activeInHierarchy)
         {
             craftingController.OnClickInventoryItem(slot.item);
             return;
         }
 
-        if (printController != null)
+        if (printController != null && printController.gameObject.activeInHierarchy)
         {
             printController.OnClickInventoryItem(slot.item);
             return;
         }
 
-        if (packingController != null)
+        if (packingController != null && packingController.gameObject.activeInHierarchy)
         {
             packingController.OnClickInventoryItem(slot.item);
             return;
         }
 
-        Debug.LogWarning("[InventorySlotClickToCraft] ¿¬°áµÈ ÄÁÆ®·Ñ·¯°¡ ¾ø½À´Ï´Ù.");
+        Debug.LogWarning("[InventorySlotClickToCraft] í™œì„±í™”ëœ ì»¨íŠ¸ë¡¤ëŸ¬ ì—†ìŒ");
     }
 }
