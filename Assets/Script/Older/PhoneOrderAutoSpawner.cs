@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PhoneOrderAutoSpawner : MonoBehaviour
 {
-    [Header("��ȭ�� (�ֹ� ���� ���)")]
+    [Header("Order Receiver")]
     [SerializeField] private CustomerPhoneOrderReceiver receiver;
 
-    [Header("�ֹ� ���� �ð� (��)")]
+    [Header("Spawn Time Seconds")]
     [SerializeField] private float minSpawnTime = 5f;
     [SerializeField] private float maxSpawnTime = 8f;
 
@@ -18,10 +18,14 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (receiver == null) return;
+        if (receiver == null)
+        {
+            Debug.LogWarning("[PhoneOrderAutoSpawner] Receiver is not assigned.");
+            return;
+        }
 
-        // �̹� �ֹ� ������ ���� ����
-        if (receiver.HasIncomingOrder) return;
+        if (receiver.HasIncomingOrder)
+            return;
 
         timer -= Time.deltaTime;
 
@@ -35,6 +39,10 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
     private void ResetSpawnTimer()
     {
         timer = Random.Range(minSpawnTime, maxSpawnTime);
+
         Debug.Log($"[PhoneOrderAutoSpawner] 다음 주문 생성까지: {timer:F1}초");
+
+        Debug.Log($"[PhoneOrderAutoSpawner] Next order in {timer:F1} seconds.");
+
     }
 }
