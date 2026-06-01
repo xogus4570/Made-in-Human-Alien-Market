@@ -35,6 +35,6 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
     private void ResetSpawnTimer()
     {
         timer = Random.Range(minSpawnTime, maxSpawnTime);
-        Debug.Log($"[PhoneOrderAutoSpawner] ���� �ֹ����� ��� �ð�: {timer:F1}��");
+        Debug.Log($"[PhoneOrderAutoSpawner] 다음 주문 생성까지: {timer:F1}초");
     }
 }

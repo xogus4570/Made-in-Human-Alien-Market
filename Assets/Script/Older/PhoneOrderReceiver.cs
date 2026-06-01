@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class PhoneOrderReceiver : MonoBehaviour, IInteractable
 {
-    [Header("·£´ı ÁÖ¹®¿ë ·¹½ÃÇÇ DB")]
+    [Header("ì „í™” ì£¼ë¬¸ìš© ë ˆì‹œí”¼ DB")]
     [SerializeField] private RecipeDB recipeDB;
 
-    [Header("ÁÖ¹® ¼ö·® ¹üÀ§")]
+    [Header("ï¿½ì£¼ë¬¸ ìˆ˜ëŸ‰ ë²”ìœ„")]
     [SerializeField] private int minOrderQuantity = 1;
     [SerializeField] private int maxOrderQuantity = 1;
 
-    [Header("ÁÖ¹® Á¦ÇÑ½Ã°£")]
+    [Header("ì£¼ë¬¸ ì œí•œì‹œê°„")]
     [SerializeField] private float incomingOrderDuration = 10f;
 
-    [Header("½ÇÆĞ ÆĞ³ÎÆ¼")]
+    [Header("ë§Œì¡±ë„ íŒ¨ë„í‹°")]
     [SerializeField] private GameStatusUI gameStatusUI;
     [SerializeField] private int missedOrderSatisfactionPenalty = 5;
 
@@ -43,14 +43,14 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
 
     public string GetInteractionName()
     {
-        return hasIncomingOrder ? "ÀüÈ­ ¹Ş±â" : "ÀüÈ­±â È®ÀÎ";
+        return hasIncomingOrder ? "ì „í™” ë°›ê¸°" : "ì „í™”ê¸° í™•ì¸";
     }
 
     public void OnInteract(GameObject interactor)
     {
         if (!hasIncomingOrder)
         {
-            Debug.Log("[PhoneOrderReceiver] ÇöÀç µé¾î¿Â ÁÖ¹®ÀÌ ¾ø½À´Ï´Ù.");
+            Debug.Log("[PhoneOrderReceiver] í˜„ì¬ ë“¤ì–´ì˜¨ ì£¼ë¬¸ì´ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -61,31 +61,31 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
     {
         if (hasIncomingOrder)
         {
-            Debug.Log("[PhoneOrderReceiver] ÀÌ¹Ì µé¾î¿Â ÁÖ¹®ÀÌ ÀÖ½À´Ï´Ù.");
+            Debug.Log("[PhoneOrderReceiver] ì´ë¯¸ ë“¤ì–´ì˜¨ ì£¼ë¬¸ì´ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
 
         if (recipeDB == null)
         {
-            Debug.LogError("[PhoneOrderReceiver] RecipeDB°¡ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("[PhoneOrderReceiver] RecipeDBê°€ ì—°ê²°ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
         if (ItemDataBase.instance == null)
         {
-            Debug.LogError("[PhoneOrderReceiver] ItemDataBase.instance °¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("[PhoneOrderReceiver] ItemDataBase.instance ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         if (GoodsUnlockManager.Instance == null)
         {
-            Debug.LogError("[PhoneOrderReceiver] GoodsUnlockManager.Instance °¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("[PhoneOrderReceiver] GoodsUnlockManager.Instance ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         if (recipeDB.recipes == null || recipeDB.recipes.Count == 0)
         {
-            Debug.LogError("[PhoneOrderReceiver] RecipeDB¿¡ µî·ÏµÈ ·¹½ÃÇÇ°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("[PhoneOrderReceiver] RecipeDBì— ë“±ë¡ëœ ë ˆì‹œí”¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -112,7 +112,7 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
 
         if (unlockedRecipes.Count == 0)
         {
-            Debug.LogWarning("[PhoneOrderReceiver] ÁÖ¹® »ı¼º ½ÇÆĞ: ÇØ±İµÈ À¯È¿ ±ÂÁî ·¹½ÃÇÇ°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("[PhoneOrderReceiver] ì£¼ë¬¸ ìƒì„± ì‹¤íŒ¨: í•´ê¸ˆëœ ìœ íš¨ êµ¿ì¦ˆ ë ˆì‹œí”¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -122,7 +122,7 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
         Item item = ItemDataBase.instance.GetById(selectedRecipe.resultId);
         if (item == null)
         {
-            Debug.LogError($"[PhoneOrderReceiver] resultId '{selectedRecipe.resultId}' ¾ÆÀÌÅÛÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            Debug.LogError($"[PhoneOrderReceiver] resultId '{selectedRecipe.resultId}'ì‹ ê·œ ì£¼ë¬¸ ìƒì„±: {{pendingItem.itemName}} x{{pendingQuantity}}\"");
             return;
         }
 
@@ -144,19 +144,19 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
             selectedRecipe.rewardInfluence == 0 &&
             selectedRecipe.rewardSatisfaction == 0)
         {
-            Debug.LogWarning($"[Recipe] º¸»ó ¼³Á¤ ¾ÈµÊ: {selectedRecipe.resultId}");
+            Debug.LogWarning($"[Recipe] ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½: {selectedRecipe.resultId}");
         }
 
-        Debug.Log($"[PhoneOrderReceiver] ·£´ı ÁÖ¹® µµÂø: {pendingItem.itemName} x{pendingQuantity}");
-        Debug.Log($"[PhoneOrderReceiver] ¼±ÅÃµÈ ÇØ±İ ±ÂÁî resultId: {selectedRecipe.resultId}");
-        Debug.Log($"[PhoneOrderReceiver] {incomingOrderDuration}ÃÊ ¾È¿¡ ÀüÈ­¸¦ ¹Ş¾Æ¾ß ÇÕ´Ï´Ù.");
+        Debug.Log($"[PhoneOrderReceiver] ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½: {pendingItem.itemName} x{pendingQuantity}");
+        Debug.Log($"[PhoneOrderReceiver] ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Ø±ï¿½ ï¿½ï¿½ï¿½ï¿½ resultId: {selectedRecipe.resultId}");
+        Debug.Log($"[PhoneOrderReceiver] {incomingOrderDuration}ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½Ş¾Æ¾ï¿½ ï¿½Õ´Ï´ï¿½.");
     }
 
     private void AcceptOrder()
     {
         if (OrderManager.Instance == null)
         {
-            Debug.LogError("[PhoneOrderReceiver] OrderManager.Instance °¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("[PhoneOrderReceiver] OrderManager.Instance ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
@@ -169,23 +169,23 @@ public class PhoneOrderReceiver : MonoBehaviour, IInteractable
             pendingRewardSatisfaction
         );
 
-        Debug.Log($"[PhoneOrderReceiver] ÁÖ¹® ¼ö¶ô ¿Ï·á: {pendingItem.itemName} x{pendingQuantity}");
+        Debug.Log($"[PhoneOrderReceiver] ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½: {pendingItem.itemName} x{pendingQuantity}");
 
         ClearIncomingOrder();
     }
 
     private void ExpireIncomingOrder()
     {
-        Debug.Log("[PhoneOrderReceiver] ÁÖ¹® ½Ã°£ÀÌ ¸¸·áµÇ¾ú½À´Ï´Ù. ÁÖ¹®ÀÌ Ãë¼ÒµË´Ï´Ù.");
+        Debug.Log("[PhoneOrderReceiver] ï¿½Ö¹ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ÒµË´Ï´ï¿½.");
 
         if (gameStatusUI != null)
         {
             gameStatusUI.ReduceSatisfaction(missedOrderSatisfactionPenalty);
-            Debug.Log($"[PhoneOrderReceiver] °í°´¸¸Á·µµ {missedOrderSatisfactionPenalty} °¨¼Ò");
+            Debug.Log($"[PhoneOrderReceiver] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {missedOrderSatisfactionPenalty} ï¿½ï¿½ï¿½ï¿½");
         }
         else
         {
-            Debug.LogWarning("[PhoneOrderReceiver] GameStatusUI°¡ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("[PhoneOrderReceiver] GameStatusUIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
         }
 
         ClearIncomingOrder();
