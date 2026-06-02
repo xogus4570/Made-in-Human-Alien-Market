@@ -229,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -6.8011, y: 0.000030518}
+  m_AnchoredPosition: {x: -6.8011017, y: 0.000030517578}
   m_SizeDelta: {x: 134.8991, y: 0.0000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &152882668
@@ -2529,7 +2529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f8a3d0f41817f46b155c2d0a2b6bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipeLimit
-  craftableResultIds: []
+  craftableResultIds:
+  - GD_alienLanguageSticker_A
+  - GD_alienLanguageSticker_C
+  - GD_alienLanguageSticker_B
+  - GD_alienLanguageSticker_R
 --- !u!1 &1950889203
 GameObject:
   m_ObjectHideFlags: 0
