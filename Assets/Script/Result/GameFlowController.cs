@@ -12,6 +12,18 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private GameStatusUI gameStatusUI;
     [SerializeField] private ResultPanelUI resultPanelUI;
     [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private Transform playerTransform;
+
+    [Header("Player 위치 초기화 / 맵 이탈 복구")]
+    [SerializeField] private bool resetPlayerPositionOnPlayStart = true;
+    [SerializeField] private bool enablePlayerOutOfBoundsReset = true;
+    [SerializeField] private Vector3 playerResetPosition = Vector3.zero;
+
+    [Header("Player 맵 범위")]
+    [SerializeField] private float minPlayerX = -20f;
+    [SerializeField] private float maxPlayerX = 20f;
+    [SerializeField] private float minPlayerY = -20f;
+    [SerializeField] private float maxPlayerY = 20f;
 
     [Header("영업 제어")]
     [SerializeField] private PhoneOrderAutoSpawner phoneOrderAutoSpawner;
@@ -164,6 +176,7 @@ public class GameFlowController : MonoBehaviour
     private void Update()
     {
         UpdateBusinessTime();
+        CheckPlayerOutOfBoundsDuringPlay();
 
         if (enableResultTestKey &&
             currentState == GameFlowState.Play &&
@@ -207,6 +220,85 @@ public class GameFlowController : MonoBehaviour
 
         gameStatusUI.ReduceSatisfaction(decreaseSatisfactionAmount);
         Debug.Log($"[FSM-Test] 고객만족도를 {decreaseSatisfactionAmount} 감소시켰습니다.");
+    }
+
+    private void CachePlayerTransformIfNeeded()
+    {
+        if (playerTransform != null)
+            return;
+
+        GameObject playerObject = GameObject.Find("Player");
+
+        if (playerObject != null)
+            playerTransform = playerObject.transform;
+    }
+
+    private void ResetPlayerPositionForPlay()
+    {
+        if (!resetPlayerPositionOnPlayStart)
+            return;
+
+        CachePlayerTransformIfNeeded();
+
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("[FSM] Player Transform이 연결되지 않아 Play 시작 위치를 초기화할 수 없습니다.");
+            return;
+        }
+
+        ResetPlayerToSafePosition();
+
+        Debug.Log("[FSM] Play 시작: Player 위치를 안전 위치로 초기화했습니다.");
+    }
+
+    private void CheckPlayerOutOfBoundsDuringPlay()
+    {
+        if (!enablePlayerOutOfBoundsReset)
+            return;
+
+        if (currentState != GameFlowState.Play)
+            return;
+
+        CachePlayerTransformIfNeeded();
+
+        if (playerTransform == null)
+            return;
+
+        Vector3 pos = playerTransform.position;
+
+        bool isOutOfBounds =
+            pos.x < minPlayerX ||
+            pos.x > maxPlayerX ||
+            pos.y < minPlayerY ||
+            pos.y > maxPlayerY;
+
+        if (!isOutOfBounds)
+            return;
+
+        ResetPlayerToSafePosition();
+
+        Debug.Log(
+            $"[FSM] Player 맵 이탈 감지. 위치 {pos} → {playerResetPosition}으로 강제 복귀"
+        );
+    }
+
+    private void ResetPlayerToSafePosition()
+    {
+        if (playerTransform == null)
+            return;
+
+        playerTransform.position = playerResetPosition;
+
+        Rigidbody2D rb = playerTransform.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+
+        if (GameDataManager.Instance != null)
+        {
+            GameDataManager.Instance.playerPosition = playerResetPosition;
+            GameDataManager.Instance.hasPlayerPosition = true;
+        }
     }
 
     public void OnClickStartPlay()
@@ -254,6 +346,8 @@ public class GameFlowController : MonoBehaviour
             GameDataManager.Instance.flowState = GameFlowState.Play;
 
         ResetBusinessTime();
+        ResetPlayerPositionForPlay();
+
         LastRealtime = Time.realtimeSinceStartup;
         isTimeRunning = true;
         UpdateDayNightByCurrentTime();
