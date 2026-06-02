@@ -401,6 +401,8 @@ public class GameFlowController : MonoBehaviour
             LastRealtime = now;
             UpdateTimeUI();
             UpdateDayNightByCurrentTime();
+
+            Debug.Log("[FSM-Time] 씬 복귀 시간 보정 초기화");
             return;
         }
 
@@ -411,10 +413,24 @@ public class GameFlowController : MonoBehaviour
         {
             UpdateTimeUI();
             UpdateDayNightByCurrentTime();
+
+            Debug.Log("[FSM-Time] 씬 복귀 감지됨. 추가로 반영할 경과 시간이 없습니다.");
             return;
         }
 
+        int beforeHour = CurrentHour;
+        int beforeMinute = CurrentMinute;
+        float beforeTickTimer = TimeTickTimer;
+
         TimeTickTimer += elapsed;
+
+        int advancedTickCount = 0;
+        int advancedGameMinutes = 0;
+
+        Debug.Log(
+            $"[FSM-Time] 다른 씬 체류 시간 감지: 현실 경과 {elapsed:F1}초 / " +
+            $"누적 타이머 {beforeTickTimer:F1}초 → {TimeTickTimer:F1}초"
+        );
 
         while (TimeTickTimer >= timeTickSec)
         {
@@ -422,10 +438,25 @@ public class GameFlowController : MonoBehaviour
 
             AddGameMinutes(gameMinutePerTick);
 
+            advancedTickCount++;
+            advancedGameMinutes += gameMinutePerTick;
+
+            Debug.Log(
+                $"[FSM-Time] 다른 씬 시간 반영: {advancedTickCount}틱 진행 / " +
+                $"게임 시간 +{advancedGameMinutes}분 / 현재 {CurrentHour:00}:{CurrentMinute:00}"
+            );
+
             if (IsBusinessTimeEnded())
             {
                 UpdateTimeUI();
                 UpdateDayNightByCurrentTime();
+
+                Debug.Log(
+                    $"[FSM-Time] 다른 씬 체류 중 영업 시간 종료 감지. " +
+                    $"복귀 후 Result로 전환합니다. " +
+                    $"이전 시간 {beforeHour:00}:{beforeMinute:00} → 현재 {CurrentHour:00}:{CurrentMinute:00}"
+                );
+
                 Debug.Log("[FSM] 씬 복귀 중 영업 시간이 종료되어 Result 상태로 전환합니다.");
                 EnterResult();
                 return;
@@ -434,6 +465,12 @@ public class GameFlowController : MonoBehaviour
 
         UpdateTimeUI();
         UpdateDayNightByCurrentTime();
+
+        Debug.Log(
+            $"[FSM-Time] 씬 복귀 시간 보정 완료. " +
+            $"이전 시간 {beforeHour:00}:{beforeMinute:00} → 현재 {CurrentHour:00}:{CurrentMinute:00} / " +
+            $"반영된 게임 시간 +{advancedGameMinutes}분 / 남은 누적 타이머 {TimeTickTimer:F1}초"
+        );
     }
 
     private void ResetBusinessTime()

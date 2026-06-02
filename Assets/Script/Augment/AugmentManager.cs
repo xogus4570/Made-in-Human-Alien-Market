@@ -18,6 +18,12 @@ public class AugmentManager : MonoBehaviour
     [SerializeField] private int bRankChance = 25;
     [SerializeField] private int aRankChance = 5;
 
+    [Header("고객만족도 기반 +/- 적용")]
+    [SerializeField] private bool enableSatisfactionSignRule = true;
+
+    [Tooltip("현재 고객만족도가 이 값 이하이면 증강 효과를 -로 적용합니다.")]
+    [SerializeField] private int negativeEffectSatisfactionThreshold = 50;
+
     [Header("테스트")]
     [SerializeField] private bool enableTestKey = true;
     [SerializeField] private KeyCode testKey = KeyCode.U;
@@ -89,6 +95,17 @@ public class AugmentManager : MonoBehaviour
         isOpen = true;
 
         Debug.Log($"[AugmentManager] 증강 선택창 열림 / 선택 랭크: {selectedRank}");
+
+        if (enableSatisfactionSignRule && gameStatusUI != null)
+        {
+            string signText = IsNegativeEffectBySatisfaction() ? "-" : "+";
+
+            Debug.Log(
+                $"[AugmentManager] 고객만족도 기준 효과 방향: {signText} / " +
+                $"현재 만족도: {gameStatusUI.CurrentSatisfaction} / " +
+                $"기준값: {negativeEffectSatisfactionThreshold}"
+            );
+        }
     }
 
     public void SelectAugment(AugmentData data)
@@ -103,6 +120,15 @@ public class AugmentManager : MonoBehaviour
         CloseAugment();
 
         Debug.Log($"[AugmentManager] 증강 선택 완료: {data.augmentName}");
+
+        // 증강 선택이 끝난 뒤 Result 확정 처리 → NextDay 진행
+        if (GameFlowController.Instance != null)
+        {
+            GameFlowController.Instance.OnResultConfirmed();
+            return;
+        }
+
+        Debug.LogWarning("[AugmentManager] GameFlowController.Instance가 없습니다. 다음 날 처리를 진행할 수 없습니다.");
     }
 
     private void ApplyAugment(AugmentData data)
@@ -113,24 +139,64 @@ public class AugmentManager : MonoBehaviour
             return;
         }
 
+        int finalValue = GetFinalAugmentValue(data.value);
+
         switch (data.effectType)
         {
             case AugmentEffectType.AddGold:
-                gameStatusUI.AddGold(data.value);
+                gameStatusUI.AddGold(finalValue);
                 break;
 
             case AugmentEffectType.AddExp:
-                gameStatusUI.AddExp(data.value);
+                if (finalValue > 0)
+                {
+                    gameStatusUI.AddExp(finalValue);
+                }
+                else
+                {
+                    Debug.LogWarning("[AugmentManager] 현재 GameStatusUI 구조상 경험치 감소는 적용하지 않습니다.");
+                }
                 break;
 
             case AugmentEffectType.AddInfluence:
-                gameStatusUI.AddInfluence(data.value);
+                gameStatusUI.AddInfluence(finalValue);
                 break;
 
             case AugmentEffectType.AddSatisfaction:
-                gameStatusUI.AddSatisfaction(data.value);
+                if (finalValue >= 0)
+                    gameStatusUI.AddSatisfaction(finalValue);
+                else
+                    gameStatusUI.ReduceSatisfaction(-finalValue);
                 break;
         }
+
+        Debug.Log(
+            $"[AugmentManager] 증강 효과 적용: {data.augmentName} / " +
+            $"효과 타입: {data.effectType} / " +
+            $"원래 수치: {data.value} / " +
+            $"최종 적용 수치: {finalValue}"
+        );
+    }
+
+    private int GetFinalAugmentValue(int originalValue)
+    {
+        int absValue = Mathf.Abs(originalValue);
+
+        if (!enableSatisfactionSignRule)
+            return absValue;
+
+        if (IsNegativeEffectBySatisfaction())
+            return -absValue;
+
+        return absValue;
+    }
+
+    private bool IsNegativeEffectBySatisfaction()
+    {
+        if (gameStatusUI == null)
+            return false;
+
+        return gameStatusUI.CurrentSatisfaction <= negativeEffectSatisfactionThreshold;
     }
 
     public void CloseAugment()
