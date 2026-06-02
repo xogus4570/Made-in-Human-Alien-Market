@@ -1616,6 +1616,9 @@ MonoBehaviour:
     'QQQ'\uAC00 \uC9C0\uAD6C\uC5D0 \uB2F9\uB3C4\uD588\uB2E4."
   typingSpeed: 0.04
   fadeSpeed: 0.7
+  mainSceneName: GwonTaeHyeon_Test
+  enableSkipKey: 1
+  skipKey: 32
 --- !u!4 &1675846846
 Transform:
   m_ObjectHideFlags: 0

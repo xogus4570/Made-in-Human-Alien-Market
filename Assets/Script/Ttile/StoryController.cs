@@ -1,41 +1,51 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class StoryController : MonoBehaviour
 {
-    [Header("�г�")]
+    [Header("패널")]
     [SerializeField] private GameObject titleMenuPanel;
     [SerializeField] private GameObject storyPanel;
 
-    [Header("��ư")]
+    [Header("버튼")]
     [SerializeField] private GameObject nextButton;
 
-    [Header("���丮 �̹�����")]
+    [Header("스토리 이미지")]
     [SerializeField] private GameObject[] storyImages;
 
-    [Header("�Ϲ� ��� UI")]
+    [Header("일반 대사 UI")]
     [SerializeField] private TextMeshProUGUI storyText;
 
-    [Header("��Ʈ�� ���� ȭ�� UI")]
+    [Header("인트로 검은 화면 UI")]
     [SerializeField] private Image blackOverlay;
     [SerializeField] private TextMeshProUGUI introText;
 
-    [Header("���丮 �ؽ�Ʈ")]
+    [Header("스토리 텍스트")]
     [TextArea(2, 5)]
     [SerializeField] private string[] storyTexts;
 
-    [Header("��Ʈ�� �ؽ�Ʈ")]
+    [Header("인트로 텍스트")]
     [TextArea(2, 5)]
     [SerializeField] private string introStoryText;
 
-    [Header("���� �ӵ�")]
+    [Header("진행 속도")]
     [SerializeField] private float typingSpeed = 0.04f;
     [SerializeField] private float fadeSpeed = 0.7f;
 
+    [Header("씬 이동")]
+    [SerializeField] private string mainSceneName = "GwonTaeHyeon_Test";
+
+    [Header("스킵 설정")]
+    [SerializeField] private bool enableSkipKey = true;
+    [SerializeField] private KeyCode skipKey = KeyCode.Space;
+
     private int currentIndex = 0;
     private bool isTyping = false;
+    private bool storyStarted = false;
+    private bool isMovingScene = false;
 
     private void Start()
     {
@@ -60,6 +70,24 @@ public class StoryController : MonoBehaviour
             nextButton.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (!enableSkipKey)
+            return;
+
+        if (!storyStarted)
+            return;
+
+        if (isMovingScene)
+            return;
+
+        if (Input.GetKeyDown(skipKey))
+        {
+            Debug.Log($"[Story] 스킵 키 입력: {skipKey}. 메인 씬으로 이동합니다.");
+            MoveToMainScene();
+        }
+    }
+
     public void StartStory()
     {
         if (titleMenuPanel != null)
@@ -72,22 +100,49 @@ public class StoryController : MonoBehaviour
             nextButton.SetActive(false);
 
         currentIndex = 0;
+        storyStarted = true;
+        isMovingScene = false;
+
         StartCoroutine(PlayIntroStory());
     }
 
     public void NextStory()
     {
-        if (isTyping) return;
+        if (isMovingScene)
+            return;
+
+        if (isTyping)
+            return;
 
         currentIndex++;
 
         if (currentIndex >= storyImages.Length)
         {
-            Debug.Log("[Story] ���丮 ����. ���߿� ���� ���� �� �̵� ����");
+            MoveToMainScene();
             return;
         }
 
         ShowStory(currentIndex);
+    }
+
+    private void MoveToMainScene()
+    {
+        if (isMovingScene)
+            return;
+
+        isMovingScene = true;
+
+        StopAllCoroutines();
+
+        if (string.IsNullOrEmpty(mainSceneName))
+        {
+            Debug.LogWarning("[Story] mainSceneName이 비어 있어 메인 씬으로 이동할 수 없습니다.");
+            isMovingScene = false;
+            return;
+        }
+
+        Debug.Log($"[Story] 메인 씬으로 이동합니다: {mainSceneName}");
+        SceneManager.LoadScene(mainSceneName);
     }
 
     private IEnumerator PlayIntroStory()
@@ -162,7 +217,7 @@ public class StoryController : MonoBehaviour
 
         if (index < storyTexts.Length)
             StartCoroutine(TypeStoryText(storyTexts[index]));
-        else
+        else if (storyText != null)
             storyText.text = "";
     }
 

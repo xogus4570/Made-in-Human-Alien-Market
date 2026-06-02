@@ -61,6 +61,13 @@ public class GameFlowController : MonoBehaviour
     [SerializeField] private KeyCode decreaseSatisfactionKey = KeyCode.Alpha9;
     [SerializeField] private int decreaseSatisfactionAmount = 10;
 
+    [Header("시연용 시간 조작 키")]
+    [SerializeField] private bool enableTimeControlComboKey = true;
+    [SerializeField] private KeyCode timeControlHoldKey = KeyCode.T;
+    [SerializeField] private KeyCode timeForwardKey = KeyCode.Equals;
+    [SerializeField] private KeyCode timeBackwardKey = KeyCode.Minus;
+    [SerializeField] private bool allowKeypadTimeControl = true;
+
     [Header("상태별 낮/밤 알파값")]
     [SerializeField] private float readyOverlayAlpha = 0.75f;
     [SerializeField] private float resultOverlayAlpha = 0.00f;
@@ -177,6 +184,7 @@ public class GameFlowController : MonoBehaviour
     {
         UpdateBusinessTime();
         CheckPlayerOutOfBoundsDuringPlay();
+        HandleTimeControlComboKey();
 
         if (enableResultTestKey &&
             currentState == GameFlowState.Play &&
@@ -299,6 +307,103 @@ public class GameFlowController : MonoBehaviour
             GameDataManager.Instance.playerPosition = playerResetPosition;
             GameDataManager.Instance.hasPlayerPosition = true;
         }
+    }
+
+    private void HandleTimeControlComboKey()
+    {
+        if (!enableTimeControlComboKey)
+            return;
+
+        if (currentState != GameFlowState.Play)
+            return;
+
+        if (!Input.GetKey(timeControlHoldKey))
+            return;
+
+        bool forwardPressed =
+            Input.GetKeyDown(timeForwardKey) ||
+            (allowKeypadTimeControl && Input.GetKeyDown(KeyCode.KeypadPlus));
+
+        bool backwardPressed =
+            Input.GetKeyDown(timeBackwardKey) ||
+            (allowKeypadTimeControl && Input.GetKeyDown(KeyCode.KeypadMinus));
+
+        if (forwardPressed)
+        {
+            AdvanceOneBusinessTimeTickForTest();
+            return;
+        }
+
+        if (backwardPressed)
+        {
+            RewindOneBusinessTimeTickForTest();
+            return;
+        }
+    }
+
+    private void AdvanceOneBusinessTimeTickForTest()
+    {
+        if (currentState != GameFlowState.Play)
+        {
+            Debug.LogWarning("[FSM-Time-Test] Play 상태가 아니라 시간 빠른 진행을 무시합니다.");
+            return;
+        }
+
+        AddGameMinutes(gameMinutePerTick);
+        TimeTickTimer = 0f;
+        LastRealtime = Time.realtimeSinceStartup;
+
+        UpdateTimeUI();
+        UpdateDayNightByCurrentTime();
+
+        Debug.Log($"[FSM-Time-Test] 시연용 시간 1틱 진행: +{gameMinutePerTick}분 / 현재 {CurrentHour:00}:{CurrentMinute:00}");
+
+        if (IsBusinessTimeEnded())
+        {
+            Debug.Log("[FSM-Time-Test] 시연용 시간 진행으로 영업 시간이 종료되어 Result 상태로 전환합니다.");
+            EnterResult();
+        }
+    }
+
+    private void RewindOneBusinessTimeTickForTest()
+    {
+        if (currentState != GameFlowState.Play)
+        {
+            Debug.LogWarning("[FSM-Time-Test] Play 상태가 아니라 시간 되돌리기를 무시합니다.");
+            return;
+        }
+
+        SubtractGameMinutes(gameMinutePerTick);
+        TimeTickTimer = 0f;
+        LastRealtime = Time.realtimeSinceStartup;
+
+        UpdateTimeUI();
+        UpdateDayNightByCurrentTime();
+
+        Debug.Log($"[FSM-Time-Test] 시연용 시간 1틱 되돌림: -{gameMinutePerTick}분 / 현재 {CurrentHour:00}:{CurrentMinute:00}");
+    }
+
+    private void SubtractGameMinutes(int minutes)
+    {
+        int hour = CurrentHour;
+        int minute = CurrentMinute;
+
+        minute -= minutes;
+
+        while (minute < 0)
+        {
+            minute += 60;
+            hour--;
+        }
+
+        if (hour < startHour || (hour == startHour && minute < startMinute))
+        {
+            hour = startHour;
+            minute = startMinute;
+        }
+
+        CurrentHour = hour;
+        CurrentMinute = minute;
     }
 
     public void OnClickStartPlay()
