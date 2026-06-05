@@ -2530,10 +2530,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipeLimit
   craftableResultIds:
-  - GD_alienLanguageSticker_A
-  - GD_alienLanguageSticker_C
-  - GD_alienLanguageSticker_B
-  - GD_alienLanguageSticker_R
+  - GD_hologramPhoca_A
+  - GD_hologramPhoca_C
+  - GD_hologramPhoca_B
+  - GD_hologramPhoca_R
+  - GD_eyeContactPoster_A
+  - GD_eyeContactPoster_C
+  - GD_eyeContactPoster_B
+  - GD_eyeContactPoster_R
+  - GD_soundKeycaps_A
+  - GD_soundKeycaps_C
+  - GD_soundKeycaps_B
+  - GD_soundKeycaps_R
+  - GD_alienIdolDoll_A
+  - GD_alienIdolDoll_C
+  - GD_alienIdolDoll_B
+  - GD_alienIdolDoll_R
 --- !u!1 &1950889203
 GameObject:
   m_ObjectHideFlags: 0

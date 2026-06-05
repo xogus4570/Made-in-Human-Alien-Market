@@ -77,4 +77,17 @@ public class OrderDialogUI : MonoBehaviour
         if (dialogPanel != null)
             dialogPanel.SetActive(false);
     }
+    private void Update()
+    {
+        if (dialogPanel == null)
+            return;
+
+        if (!dialogPanel.activeSelf)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Close();
+        }
+    }
 }

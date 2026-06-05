@@ -2174,10 +2174,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipeLimit
   craftableResultIds:
-  - GD_alienLanguageSticker_A
-  - GD_alienLanguageSticker_C
-  - GD_alienLanguageSticker_B
-  - GD_alienLanguageSticker_R
+  - GD_temperaturePoster_A
+  - GD_temperaturePoster_C
+  - GD_temperaturePoster_B
+  - GD_temperaturePoster_R
+  - GD_talkSlimeKeyring_A
+  - GD_talkSlimeKeyring_C
+  - GD_talkSlimeKeyring_B
+  - GD_talkSlimeKeyring_R
+  - GD_keycapFilter_A
+  - GD_keycapFilter_C
+  - GD_keycapFilter_B
+  - GD_keycapFilter_R
+  - GD_movingT-shirt_A
+  - GD_movingT-shirt_C
+  - GD_movingT-shirt_B
+  - GD_movingT-shirt_R
 --- !u!1 &1950889203
 GameObject:
   m_ObjectHideFlags: 0

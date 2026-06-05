@@ -20,7 +20,7 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
     {
         if (receiver == null)
         {
-            Debug.LogWarning("[PhoneOrderAutoSpawner] Receiver is not assigned.");
+            Debug.LogWarning("[PhoneOrderAutoSpawner] Receiver is not null.");
             return;
         }
 
@@ -31,6 +31,7 @@ public class PhoneOrderAutoSpawner : MonoBehaviour
 
         if (timer <= 0f)
         {
+            Debug.Log("[PhoneOrderAutoSpawner] 주문 생성 시도");
             receiver.CreateTestIncomingOrder();
             ResetSpawnTimer();
         }

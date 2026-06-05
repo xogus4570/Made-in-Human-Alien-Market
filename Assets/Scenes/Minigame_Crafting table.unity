@@ -2783,6 +2783,18 @@ MonoBehaviour:
   - GD_alienLanguageSticker_C
   - GD_alienLanguageSticker_B
   - GD_alienLanguageSticker_R
+  - GD_interactionPoster_A
+  - GD_interactionPoster_C
+  - GD_interactionPoster_B
+  - GD_interactionPoster_R
+  - GD_melodyKeyring_A
+  - GD_melodyKeyring_C
+  - GD_melodyKeyring_B
+  - GD_melodyKeyring_R
+  - GD_planetBuildingKitr_A
+  - GD_planetBuildingKitr_C
+  - GD_planetBuildingKitr_B
+  - GD_planetBuildingKitr_R
 --- !u!1 &1933217752
 GameObject:
   m_ObjectHideFlags: 0

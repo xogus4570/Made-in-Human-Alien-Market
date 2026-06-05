@@ -8,6 +8,9 @@ public class ShopUI : MonoBehaviour
     [Header("상점 여는 버튼")]
     [SerializeField] private GameObject openShopButton;
 
+    [Header("영업 시작 버튼")]
+    [SerializeField] private GameObject startButton;
+
     [Header("시작 시 상점 열림 여부")]
     [SerializeField] private bool startOpened = false;
 
@@ -44,5 +47,8 @@ public class ShopUI : MonoBehaviour
 
         if (openShopButton != null)
             openShopButton.SetActive(!isOpen);
+
+        if (startButton != null)
+            startButton.SetActive(!isOpen);
     }
 }
