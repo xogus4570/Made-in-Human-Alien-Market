@@ -560,7 +560,7 @@ MonoBehaviour:
   startMinute: 0
   endHour: 24
   endMinute: 0
-  timeTickSec: 1
+  timeTickSec: 5
   gameMinutePerTick: 15
   enableResultTestKey: 1
   enableSatisfactionRecoverTestKey: 1
@@ -52822,6 +52822,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883937841}
   m_CullTransparentMesh: 1
+--- !u!1 &1899697741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899697743}
+  - component: {fileID: 1899697742}
+  m_Layer: 0
+  m_Name: InventoryCheatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1899697742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899697741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b01335ecc89f8c4699d9bc277e23cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCheat
+  cheatKey: 99
+  addCount: 1
+  showLog: 1
+--- !u!4 &1899697743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899697741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 928.0202, y: 546.94885, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902310995
 GameObject:
   m_ObjectHideFlags: 0
@@ -54018,7 +54065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InspectorSpawnManager
   gameStatusUI: {fileID: 1939240710}
   inspectorObject: {fileID: 1414178699}
-  satisfactionThreshold: 95
+  satisfactionThreshold: 89
   onlyInPlayState: 1
 --- !u!4 &1932814514
 Transform:
@@ -62876,3 +62923,4 @@ SceneRoots:
   - {fileID: 2072387407}
   - {fileID: 757146015}
   - {fileID: 1316941285}
+  - {fileID: 1899697743}
