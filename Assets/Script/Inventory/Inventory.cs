@@ -62,6 +62,16 @@ public class Inventory : MonoBehaviour
         return slot != null ? slot.count : 0;
     }
 
+    public void ClearAll()
+    {
+        slots.Clear();
+        Changed?.Invoke();
+        Debug.Log("[인벤토리] 전체 비우기 완료");
+    }
+
     // 외부에서 리스트를 변경 못하게 보호
     public IReadOnlyList<Slot> GetAllSlots() => slots.AsReadOnly();
+
+
+   
 }

@@ -30,14 +30,19 @@ public class GameStatusUI : MonoBehaviour
         UpdateUI();
     }
 
+    private void OnEnable()
+    {
+        UpdateUI();
+    }
+
     public bool NextDay()
     {
         if (Data == null) return false;
-        if (Data.day >= MaxDays) return false; // 이미 최대
+        if (Data.day >= MaxDays) return false;
 
         Data.day++;
         UpdateUI();
-        return true; // 증가 성공
+        return true;
     }
 
     public void SetDay(int value)
@@ -117,6 +122,39 @@ public class GameStatusUI : MonoBehaviour
 
     public int CurrentGold => Data != null ? Data.gold : 0;
     public int CurrentInfluence => Data != null ? Data.influence : 0;
+
+    public void ApplyLoadedStatus(
+        int loadedDay,
+        int loadedGold,
+        int loadedInfluence,
+        int loadedSatisfaction,
+        int loadedLevel,
+        int loadedCurrentExp)
+    {
+        if (Data == null)
+        {
+            Debug.LogWarning("[GameStatusUI] 저장 데이터 반영 실패: GameDataManager.Instance가 없습니다.");
+            return;
+        }
+
+        Data.day = Mathf.Clamp(loadedDay, 1, MaxDays);
+        Data.gold = Mathf.Max(0, loadedGold);
+        Data.influence = Mathf.Max(0, loadedInfluence);
+        Data.satisfaction = Mathf.Clamp(loadedSatisfaction, 0, 100);
+
+        Data.level = Mathf.Max(1, loadedLevel);
+        Data.currentExp = Mathf.Max(0, loadedCurrentExp);
+
+        UpdateUI();
+
+        Debug.Log($"[GameStatusUI] 저장 데이터 반영 완료: {Data.day}일차 / 골드 {Data.gold} / 영향력 {Data.influence} / 만족도 {Data.satisfaction} / Lv.{Data.level}");
+    }
+
+    public void RefreshStatusUI()
+    {
+        UpdateUI();
+        Debug.Log("[GameStatusUI] 상태 UI 새로고침 완료");
+    }
 
     private void UpdateUI()
     {
